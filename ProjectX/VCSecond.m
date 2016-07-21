@@ -14,6 +14,7 @@
     NSString *userid,*roleid;
         NSString *pbdate,*username,*rolename,*myweekday;
     NSMutableArray *mArray;
+    UIButton *checkbox;
 }
 
 @synthesize currentElement;
@@ -21,8 +22,20 @@
 
 -(void)viewDidLoad
 {
+    checkbox=[UIButton buttonWithType:UIButtonTypeCustom];
+    CGRect checkboxRect = CGRectMake(10, 30, 30, 20);
+    // checkbox.frame=CGRectMake(10, 30, 30, 20);
+    [checkbox setFrame:checkboxRect];
+    [checkbox setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    [checkbox setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateSelected];
+    [checkbox addTarget:self action:@selector(checkboxClick) forControlEvents:UIControlEventTouchUpInside];
+    
     self.view.backgroundColor=[UIColor whiteColor];
-
+    UITabBarItem* tabBarItem=[[UITabBarItem alloc]initWithTitle:@"我的值班" image:nil tag:102];
+    tabBarItem.image=[UIImage imageNamed:@"clock.png"];
+    // tabBarItem.badgeValue=@"2";
+    
+    self.tabBarItem=tabBarItem;
     NSString *deleuserid=[self.mydelegate getuserid];
     //NSLog(@"deleuserid is %@",deleuserid);
     mArray=[NSMutableArray arrayWithCapacity:20];
@@ -206,11 +219,12 @@
 {
 
  //    NSLog(@"%@",username);
-    _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, 536) style:UITableViewStylePlain];
+    _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 60, 380, 536) style:UITableViewStylePlain];
 
     _tableView.delegate=self;
     _tableView.dataSource=self;
     [self.view addSubview:_tableView];
+    [self.view addSubview:checkbox];
     
 }
 //每行高度
@@ -228,5 +242,10 @@
 {
     return 70;
 }
-
+-(void)checkboxClick
+{
+    NSLog(@"backbutton clicked.");
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

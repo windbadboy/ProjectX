@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "FMDB.h"
 #import "noteinfo.h"
+#import "DetailNote.h"
+#import "DetailNoteDelegate.h"
 @interface VCNotification : UIViewController
 <
 //实现数据视图的普通协议
@@ -20,8 +22,8 @@ UITableViewDataSource,
 NSURLConnectionDelegate,
 NSURLConnectionDataDelegate,
 NSXMLParserDelegate,
-UIAlertViewDelegate
-
+UIAlertViewDelegate,
+DetailNoteDelegate
 >
 {
     FMDatabase* noteDB;
@@ -29,5 +31,6 @@ UIAlertViewDelegate
     NSMutableData* _data;
     UITableView* _tableView;
 }
+@property(nonatomic,retain) NSString *firstValue ;
 @property NSString *currentElement;
 @end

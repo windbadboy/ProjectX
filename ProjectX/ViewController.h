@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "MainFrame.h"
 #import "VCSecond.h"
-
-
+#import "FMDB.h"
+#import "VCNotification.h"
 @interface ViewController : UIViewController
 
 <
@@ -18,7 +18,8 @@ NSURLConnectionDelegate,
 NSURLConnectionDataDelegate,
 NSXMLParserDelegate,
 UIAlertViewDelegate,
-VCSecondDelegate
+VCSecondDelegate,
+UITabBarControllerDelegate
 >
 
 {
@@ -33,6 +34,8 @@ VCSecondDelegate
     UITextField* _tfUsername;
     UITextField* _tfPassword;
     UIButton* _btLogin;
+    FMDatabase* noteDB;
+    VCNotification *vcNotification;
 }
 @property (weak, nonatomic) IBOutlet UITextField *idfield;
 @property (weak, nonatomic) IBOutlet UITextField *pwfield;

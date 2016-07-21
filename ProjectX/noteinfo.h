@@ -14,4 +14,5 @@
 @property (strong,nonatomic)NSString* mybody;
 @property (strong,nonatomic)NSString* sendtime;
 @property (strong,nonatomic)NSString* notificationid;
+@property (strong,nonatomic)NSString* isread;
 @end

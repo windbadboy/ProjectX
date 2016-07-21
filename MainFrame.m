@@ -13,47 +13,15 @@
     NSString *pbdate,*username,*telshort;
     UILabel* lbltodayxzduty;
     UILabel* lbltodayduty;
+    UIButton* checkbox;
 }
 @synthesize currentElement;
 -(void)viewDidLoad{
- //   self.view.backgroundColor=[UIColor orangeColor];
-    UITabBarItem* tabBarItem=[[UITabBarItem alloc]initWithTitle:@"今日信息" image:nil tag:101];
- //   tabBarItem.image=[UIImage imageNamed:@"tabitem.png"];
-   // tabBarItem.badgeValue=@"2";
-    self.tabBarItem=tabBarItem;
-    self.view.backgroundColor=[UIColor whiteColor];
-    lbltodayduty=[[UILabel alloc]init];
-    lbltodayduty.frame=CGRectMake(130, 40, 180, 50);
-    
-    NSString *webServiceBodyStr = [NSString stringWithFormat:
-                                   @"<gettodayduty xmlns=\"http://tempuri.org/\"></gettodayduty>"];//这里是参数
-    NSString *webServiceStr = [NSString stringWithFormat:
-                               @"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body />%@</soap:Envelope>",
-                               webServiceBodyStr];//webService头
-    NSURL *url = [NSURL URLWithString:@"http://183.64.36.130:8090/webservice/webservice1.asmx"];
-    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
-    NSString *msgLength = [NSString stringWithFormat:@"%d", [webServiceStr length]];
-    
-    //ad required headers to the request
-    [theRequest addValue:@"183.64.36.130:8090" forHTTPHeaderField:@"Host"];
-    [theRequest addValue: @"text/xml;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    [theRequest addValue: @"http://tempuri.org/gettodayduty" forHTTPHeaderField:@"SOAPAction"];
-    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
-    [theRequest setHTTPMethod:@"POST"];
-    [theRequest setHTTPBody: [webServiceStr dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    //initiate the request
-    
-    _connect=[NSURLConnection connectionWithRequest:theRequest delegate:self];
-    _data=[[NSMutableData alloc] init];
-    lbltodayxzduty=[[UILabel alloc]init];
-    lbltodayxzduty.frame=CGRectMake(140, 70, 180, 50);
-    [self.view addSubview:lbltodayxzduty];
-    [self.view addSubview:lbltodayduty];
+
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+  //  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -143,9 +111,65 @@
 }
 -(void)parserDidEndDocument:(NSXMLParser *)parser
 {
-    lbltodayxzduty.text=[[NSString alloc]initWithFormat:@"%@(%@)",username,telshort];
+    lbltodayxzduty.text=[[NSString alloc]initWithFormat:@"行政值班    %@(短号:%@)",username,telshort];
     lbltodayduty.text=[[NSString alloc]initWithFormat:@"今日值班(%@)",pbdate];
                          
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    //   self.view.backgroundColor=[UIColor orangeColor];
+    UITabBarItem* tabBarItem=[[UITabBarItem alloc]initWithTitle:@"今日值班" image:nil tag:101];
+    tabBarItem.image=[UIImage imageNamed:@"duty.png"];
+    // tabBarItem.badgeValue=@"2";
+    self.tabBarItem=tabBarItem;
+    self.view.backgroundColor=[UIColor whiteColor];
+    lbltodayduty=[[UILabel alloc]init];
+    lbltodayduty.frame=CGRectMake(130, 60, 180, 50);
+    
+    NSString *webServiceBodyStr = [NSString stringWithFormat:
+                                   @"<gettodayduty xmlns=\"http://tempuri.org/\"></gettodayduty>"];//这里是参数
+    NSString *webServiceStr = [NSString stringWithFormat:
+                               @"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body />%@</soap:Envelope>",
+                               webServiceBodyStr];//webService头
+    NSURL *url = [NSURL URLWithString:@"http://183.64.36.130:8090/webservice/webservice1.asmx"];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [webServiceStr length]];
+    
+    //ad required headers to the request
+    [theRequest addValue:@"183.64.36.130:8090" forHTTPHeaderField:@"Host"];
+    [theRequest addValue: @"text/xml;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [theRequest addValue: @"http://tempuri.org/gettodayduty" forHTTPHeaderField:@"SOAPAction"];
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [webServiceStr dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    //initiate the request
+    
+    _connect=[NSURLConnection connectionWithRequest:theRequest delegate:self];
+    _data=[[NSMutableData alloc] init];
+    lbltodayxzduty=[[UILabel alloc]init];
+    lbltodayxzduty.frame=CGRectMake(120, 100, 230, 50);
+    UIImage* xzzb=[UIImage imageNamed:@"xzzb.png"];
+    UIImageView* xzzbview=[[UIImageView alloc]init];
+    xzzbview.image=xzzb;
+    xzzbview.frame=CGRectMake(50, 105, 40, 40);
+    checkbox=[UIButton buttonWithType:UIButtonTypeCustom];
+    CGRect checkboxRect = CGRectMake(10, 30, 30, 20);
+    // checkbox.frame=CGRectMake(10, 30, 30, 20);
+    [checkbox setFrame:checkboxRect];
+    [checkbox setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    [checkbox setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateSelected];
+    [checkbox addTarget:self action:@selector(checkboxClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:xzzbview];
+    [self.view addSubview:lbltodayxzduty];
+    [self.view addSubview:lbltodayduty];
+    [self.view addSubview:checkbox];
+}
+-(void)checkboxClick
+{
+    NSLog(@"backbutton clicked.");
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -21,6 +21,13 @@
     int isok;
     NSString *userid,*username;
     UIButton *checkbox;
+     NSString *sendtime,*mytitle,*mybody;
+    NSString *notificationid;
+    NSMutableArray *mArray;
+    NSString *noteid;
+    BOOL isOpen;
+    int getnote;
+        NSMutableString *strtitle,*strbody;
 }
 
 @synthesize celsiusText,currentElement;
@@ -29,46 +36,7 @@
 {
     return userid;
 }
-- (IBAction)sendX:(id)sender {
-    
-    [celsiusText resignFirstResponder];
-    NSString *mypw=_pwfield.text;
-    NSString *myuserid=_idfield.text;
-    mypw=[mypw MD5String];
-    //first create the soap envelope
- //   NSString *soapMessage=[NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body /><checklogin xmlns=\"http://tempuri.org/\"><userid>0392</userid><pwd>202cb962ac59075b964b07152d234b70</pwd></checklogin></soap:Envelope>",celsiusText.text];
 
-    
-    NSString *webServiceBodyStr = [NSString stringWithFormat:
-                                   @"<checklogin xmlns=\"http://tempuri.org/\"><userid>%@</userid><pwd>%@</pwd></checklogin>",myuserid,mypw];//这里是参数
-    NSString *webServiceStr = [NSString stringWithFormat:
-                               @"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body />%@</soap:Envelope>",
-                               webServiceBodyStr];//webService头
-    
-    
-    
-    
-    //Now create a request to the URL
-    NSURL *url = [NSURL URLWithString:@"http://183.64.36.130:8090/webservice/webservice1.asmx"];
-    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
-    NSString *msgLength = [NSString stringWithFormat:@"%d", [webServiceStr length]];
-    
-    //ad required headers to the request
-   [theRequest addValue:@"183.64.36.130:8090" forHTTPHeaderField:@"Host"];
-    [theRequest addValue: @"text/xml;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    [theRequest addValue: @"http://tempuri.org/checklogin" forHTTPHeaderField:@"SOAPAction"];
-    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
-    [theRequest setHTTPMethod:@"POST"];
-    [theRequest setHTTPBody: [webServiceStr dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    //initiate the request
-    
-    _connect=[NSURLConnection connectionWithRequest:theRequest delegate:self];
-    _data=[[NSMutableData alloc] init];
- 
-
-    
-}
 //如果有任何连接错误,调用此协议,进行错误的打印查看.
 //P1:连接对象
 //P2:错误信息
@@ -121,10 +89,18 @@
     }
     if(isok==1)
     {
+        //getnote==0表示第一次登陆验证,==1表示已经验证成功,需要读取xml通知
+        if(getnote==0)
+        {
         NSString *logintips=[NSString stringWithFormat:@"欢迎登录,%@(%@)",username,userid];
 
         UIAlertView* alert1 = [[UIAlertView alloc]initWithTitle:@"提示" message:logintips delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert1 show];
+        }
+        else
+        {
+            
+        }
 
         
     }
@@ -160,25 +136,58 @@
         }
         MainFrame *mainView=[[MainFrame alloc]init];
             VCSecond *vcSecond=[[VCSecond alloc]init];
-    VCThird *vcThrid=[[VCThird alloc]init];
-        VCNotification *vcNotification=[[VCNotification alloc]init];
-        vcNotification.title=@"通知";
-        mainView.title=@"今日值班";
-        vcSecond.title=@"我的值班";
-        vcThrid.title=@"调班";
-        vcSecond.firstValue=userid;
-        //将self赋值给代理对象mydelegate
-      //  vcSecond.view.backgroundColor=[UIColor whiteColor];
-        vcSecond.mydelegate=self;
-      //  vcSecond.view.backgroundColor=[UIColor whiteColor];
-            UITabBarController* tbController=[[UITabBarController alloc]init];
-        NSArray* arrayVC=[NSArray arrayWithObjects:mainView, vcSecond,vcNotification,vcThrid,nil];
-        tbController.viewControllers=arrayVC;
-        tbController.selectedIndex=0;
-        tbController.tabBar.translucent=NO;
+  //  VCThird *vcThrid=[[VCThird alloc]init];
+        vcNotification=[[VCNotification alloc]init];
         
+    //    vcThrid.title=@"调班";
+
+        vcSecond.firstValue=userid;
+        
+        //将self赋值给代理对象mydelegate
+       // vcSecond.view.backgroundColor=[UIColor whiteColor];
+        vcSecond.mydelegate=self;
+        //vcNotification.view.backgroundColor=[UIColor whiteColor];
+        UITabBarItem* tabBarItem=[[UITabBarItem alloc]initWithTitle:@"我的值班" image:nil tag:102];
+        tabBarItem.image=[UIImage imageNamed:@"clock.png"];
+        vcSecond.tabBarItem=tabBarItem;
+        UITabBarItem* tabBarItem2=[[UITabBarItem alloc]initWithTitle:@"通知" image:nil tag:103];
+        tabBarItem2.image=[UIImage imageNamed:@"note.png"];
+     tabBarItem2.image=[UIImage imageNamed:@"note.png"];
+        vcNotification.tabBarItem=tabBarItem2;
+
+            UITabBarController* tbController=[[UITabBarController alloc]init];
+        NSArray* arrayVC=[NSArray arrayWithObjects:mainView, vcSecond,vcNotification,nil];
+        tbController.viewControllers=arrayVC;
+       // tbController.selectedIndex=0;
+        tbController.tabBar.translucent=NO;
+        [tbController setDelegate:self];
+        
+        getnote=1;
+    //    [self.navigationController pushViewController:tbController animated:YES];
         [self presentViewController:tbController animated:YES completion:nil];
-      //  [self.navigationController pushViewController:tbController animated:YES];
+        //  [self.navigationController pushViewController:tbController animated:YES];
+        NSString *webServiceBodyStr = [NSString stringWithFormat:
+                                       @"<getnotification xmlns=\"http://tempuri.org/\"></getnotification>"];//这里是参数
+        NSString *webServiceStr = [NSString stringWithFormat:
+                                   @"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body />%@</soap:Envelope>",
+                                   webServiceBodyStr];//webService头
+        NSURL *url = [NSURL URLWithString:@"http://183.64.36.130:8090/webservice/webservice1.asmx"];
+        NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+        NSString *msgLength = [NSString stringWithFormat:@"%d", [webServiceStr length]];
+        
+        //ad required headers to the request
+        [theRequest addValue:@"183.64.36.130:8090" forHTTPHeaderField:@"Host"];
+        [theRequest addValue: @"text/xml;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        [theRequest addValue: @"http://tempuri.org/getnotification" forHTTPHeaderField:@"SOAPAction"];
+        [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+        [theRequest setHTTPMethod:@"POST"];
+        [theRequest setHTTPBody: [webServiceStr dataUsingEncoding:NSUTF8StringEncoding]];
+        // NSLog(@"the firstvalue is %@",_firstValue);
+        //initiate the request
+        
+        _connect=[NSURLConnection connectionWithRequest:theRequest delegate:self];
+        _data=[[NSMutableData alloc] init];
+        
     }
 
 }
@@ -218,20 +227,93 @@
         
         //    NSLog(@"isok is %i",isok+"");
     }
+    if ([currentElement isEqualToString:@"sendtime"]) {
+        
+        sendtime=string;
+        
+        //    NSLog(@"isok is %i",isok+"");
+    }
+    if ([currentElement isEqualToString:@"mytitle"]) {
+                [strtitle appendString:string];
+        
+        
+        //    NSLog(@"isok is %i",isok+"");
+    }
+    if ([currentElement isEqualToString:@"mybody"]) {
+        [strbody appendString:string];
+        NSLog(@"body is %@",strbody);
+        
+    }
+    if ([currentElement isEqualToString:@"notificationid"]) {
+        notificationid=string;
+        //  NSLog(@"the note id is %@",string);
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName
   namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
-  //  NSLog(@"Parsed Element : %@", currentElement);
+    if ([elementName isEqualToString:@"shownote"]) {
+        
+        if([noteid intValue]<[notificationid intValue])
+        {
+            if(isOpen)
+            {
+                
+                //        NSString* strCreateTable=@"create table if not exists mynotification (id integer primary key autoincrement,notificationid integer,notificationtitle text,notificationbody text,username text,userid text,notificationtype integer,expiredtime integer,isread integer,senddate text)";
+                NSString* strInert=[NSString stringWithFormat:@"insert into mynotification(notificationid,notificationtitle,notificationbody,username,isread,senddate) values(%@,'%@','%@','%@',%d,'%@')",notificationid,strtitle,strbody,username,0,sendtime] ;
+                BOOL isOK=[noteDB executeUpdate:strInert];
+                if(isOK)
+                {
+                    NSLog(@"插入数据成功.");
+                    strtitle=[[NSMutableString alloc]init];
+                    strbody=[[NSMutableString alloc]init];
+                    
+                }
+                else
+                {
+                    NSLog(@"插入数据失败.");
+                }
+            }
+            
+            
+        }
+        //  NSLog(@"%@",[mArray description]);
+    }
+}
+-(void)parserDidEndDocument:(NSXMLParser *)parser
+{
+if(getnote==1)
+{
+    int mycount = [noteDB intForQuery:@"SELECT COUNT(*) FROM mynotification where isread=0"];
+    if(mycount==0)
+    {
+        vcNotification.tabBarItem.badgeValue=nil;
+    }
+    else
+    {
+    vcNotification.tabBarItem.badgeValue=[[NSString alloc]initWithFormat:@"%d",mycount];
+    //    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+      //  localNotification.applicationIconBadgeNumber = mycount;
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:mycount];
+    }
+    vcNotification.firstValue=[[NSString alloc]initWithFormat:@"%d",mycount];
+    BOOL isClose=[noteDB close];
+    if(isClose)
+    {
+        NSLog(@"关闭数据库成功.");
+    }
+}
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    strtitle=[[NSMutableString alloc]init];
+    strbody=[[NSMutableString alloc]init];
     self.view.backgroundColor=[UIColor whiteColor];
-    UIImageView *imageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"选项框.png"]];
+    UIImageView *imageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"background.png"]];
     CGRect rx=[UIScreen mainScreen].bounds;
     imageView.frame=rx;
     [self.view addSubview:imageView];
@@ -316,7 +398,44 @@
 
 -(void)pressLogin
 {
-    
+    getnote=0;
+    //NSHomeDirectory获取手机app沙盒路径
+    NSString* strPath=[NSHomeDirectory() stringByAppendingString:@"/Documents/db01.db"];
+    //创建并打开数据库
+    //如果没有数据库,创建指定的数据库
+    //如果有同名数据库,则打开数据库,加载数据库到内存
+    noteDB=[FMDatabase databaseWithPath:strPath];
+    if(noteDB!=nil)
+    {
+        NSLog(@"database created successfully.");
+    }
+    isOpen=[noteDB open];
+    if(isOpen)
+    {
+        NSLog(@"打开数据库成功.");
+        NSString* strCreateTable=@"create table if not exists mynotification (id integer primary key autoincrement,notificationid integer,notificationtitle text,notificationbody text,username text,userid text,notificationtype integer,expiredtime integer,isread integer,senddate text)";
+        BOOL isCreate=[noteDB executeUpdate:strCreateTable];
+        if(isCreate)
+        {
+            NSLog(@"数据表创建成功.");
+            // NSString* strDelete=@"delete from mynotification;";
+            // [noteDB executeUpdate:strDelete];
+            NSString* strQuery=@"select * from mynotification order by notificationid desc limit 0,1;";
+            FMResultSet* result=[noteDB executeQuery:strQuery];
+            while([result next])
+            {
+                noteid=[result stringForColumn:@"notificationid"];
+                // NSLog(@"noteid is %@",noteid);
+            }
+            
+            
+        }
+        else
+        {
+            NSLog(@"数据表创建失败");
+        }
+        
+    }
 
     NSString *myuserid=_tfUsername.text;
     NSString *mypw=_tfPassword.text;
@@ -365,5 +484,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+//切换分栏时触发.
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    //indexoftab表示第几个分栏,0,1,2
+NSUInteger indexOfTab = [tabBarController.viewControllers indexOfObject:viewController];
+    NSLog(@"Tab index = %u", (int)indexOfTab);
+}
 
 @end

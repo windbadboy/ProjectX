@@ -10,6 +10,6 @@
 
 @implementation noteinfo
 -(NSString*)description{
-    return [NSString stringWithFormat:@"%@,%@,%@,%@,%@",self.myusername,self.mytitle ,self.mybody,self.notificationid,self.sendtime];
+    return [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@",self.myusername,self.mytitle ,self.mybody,self.notificationid,self.sendtime,self.isread];
 }
 @end
