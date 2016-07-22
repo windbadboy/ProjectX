@@ -33,5 +33,6 @@ NSURLSessionDelegate
     UITableView* _tableView;
 }
 @property(nonatomic,retain) NSString *firstValue ;
+@property(nonatomic,retain) NSString *userid;
 @property NSString *currentElement;
 @end

@@ -10,7 +10,14 @@
 #import "MainFrame.h"
 #import "VCSecond.h"
 #import "VCThird.h"
-@interface AppDelegate : UIResponder <UIApplicationDelegate,UITabBarControllerDelegate>
+@interface AppDelegate : UIResponder <
+UIApplicationDelegate,
+UITabBarControllerDelegate,
+NSURLSessionDelegate
+>
+{
+        NSMutableData* _data;
+}
 @property (strong, nonatomic) UIWindow *window;
 
 

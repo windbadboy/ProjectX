@@ -50,7 +50,7 @@
     NSHTTPURLResponse* res=(NSHTTPURLResponse*) response;
     if(res.statusCode==200)
     {
-        NSLog(@"connect successfully!");
+   //     NSLog(@"connect successfully!");
     [_data setLength:0];
     }
     else
@@ -142,7 +142,7 @@
     //    vcThrid.title=@"调班";
 
         vcSecond.firstValue=userid;
-        
+        vcNotification.userid=userid;
         //将self赋值给代理对象mydelegate
        // vcSecond.view.backgroundColor=[UIColor whiteColor];
         vcSecond.mydelegate=self;
@@ -241,7 +241,7 @@
     }
     if ([currentElement isEqualToString:@"mybody"]) {
         [strbody appendString:string];
-        NSLog(@"body is %@",strbody);
+     //   NSLog(@"body is %@",strbody);
         
     }
     if ([currentElement isEqualToString:@"notificationid"]) {
@@ -265,7 +265,7 @@
                 BOOL isOK=[noteDB executeUpdate:strInert];
                 if(isOK)
                 {
-                    NSLog(@"插入数据成功.");
+                  //  NSLog(@"插入数据成功.");
                     strtitle=[[NSMutableString alloc]init];
                     strbody=[[NSMutableString alloc]init];
                     
@@ -301,7 +301,7 @@ if(getnote==1)
     BOOL isClose=[noteDB close];
     if(isClose)
     {
-        NSLog(@"关闭数据库成功.");
+    //    NSLog(@"关闭数据库成功.");
     }
 }
 }
@@ -407,17 +407,17 @@ if(getnote==1)
     noteDB=[FMDatabase databaseWithPath:strPath];
     if(noteDB!=nil)
     {
-        NSLog(@"database created successfully.");
+       // NSLog(@"database created successfully.");
     }
     isOpen=[noteDB open];
     if(isOpen)
     {
-        NSLog(@"打开数据库成功.");
+      //  NSLog(@"打开数据库成功.");
         NSString* strCreateTable=@"create table if not exists mynotification (id integer primary key autoincrement,notificationid integer,notificationtitle text,notificationbody text,username text,userid text,notificationtype integer,expiredtime integer,isread integer,senddate text)";
         BOOL isCreate=[noteDB executeUpdate:strCreateTable];
         if(isCreate)
         {
-            NSLog(@"数据表创建成功.");
+          //  NSLog(@"数据表创建成功.");
             // NSString* strDelete=@"delete from mynotification;";
             // [noteDB executeUpdate:strDelete];
             NSString* strQuery=@"select * from mynotification order by notificationid desc limit 0,1;";
@@ -489,7 +489,7 @@ if(getnote==1)
 {
     //indexoftab表示第几个分栏,0,1,2
 NSUInteger indexOfTab = [tabBarController.viewControllers indexOfObject:viewController];
-    NSLog(@"Tab index = %u", (int)indexOfTab);
+  //  NSLog(@"Tab index = %u", (int)indexOfTab);
 }
 
 @end

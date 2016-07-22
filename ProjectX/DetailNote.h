@@ -22,16 +22,19 @@ UITableViewDataSource,
 NSURLConnectionDelegate,
 NSURLConnectionDataDelegate,
 NSXMLParserDelegate,
-UIAlertViewDelegate
+UIAlertViewDelegate,
+NSURLSessionDelegate
 >
 {
         FMDatabase* noteDB;
         UITableView* _tableView;
     NSURLConnection* _connect;
     NSMutableData* _data;
+        NSMutableData* _data2;
 }
 @property(nonatomic,retain) NSString *firstValue ;
 @property(nonatomic,retain) NSString *badgeValue ;
+@property(nonatomic,retain) NSString *userid ;
 @property(nonnull,retain) id<DetailNoteDelegate> delegate;
 @property NSString *currentElement;
 @end

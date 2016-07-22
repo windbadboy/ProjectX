@@ -81,7 +81,7 @@
     NSString* str=[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
     //  NSLog(@"%@",str);
     //now parsing the xml
-        NSLog(@"didfinishLoading %@",[NSThread currentThread]);
+      //  NSLog(@"didfinishLoading %@",[NSThread currentThread]);
     NSData *myData = [str dataUsingEncoding:NSUTF8StringEncoding];
     
     NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:myData];
@@ -158,7 +158,7 @@
             BOOL isOK=[noteDB executeUpdate:strInert];
             if(isOK)
             {
-                NSLog(@"插入数据成功.");
+             //   NSog(@"插入数据成功.");
                         str1=[[NSMutableString alloc]init];
                         str2=[[NSMutableString alloc]init];
             }
@@ -201,7 +201,7 @@
         BOOL isClose=[noteDB close];
         if(isClose)
         {
-            NSLog(@"关闭数据库成功.");
+          //  NSLog(@"关闭数据库成功.");
         }
     
       //  NSLog(@"%@",username);
@@ -277,6 +277,7 @@
     dn.firstValue=mynoteinfo.notificationid;
     dn.delegate=self;
     dn.badgeValue=self.firstValue;
+    dn.userid=self.userid;
     [self presentViewController:dn animated:YES completion:nil];
     //[self.navigationController pushViewController:dn animated:YES];
     
@@ -330,12 +331,12 @@
     noteDB=[FMDatabase databaseWithPath:strPath];
     if(noteDB!=nil)
     {
-        NSLog(@"database created successfully.");
+     //   NSLog(@"database created successfully.");
     }
     isOpen=[noteDB open];
     if(isOpen)
     {
-        NSLog(@"打开数据库成功.");
+      //  NSLog(@"打开数据库成功.");
         NSString* strCreateTable=@"create table if not exists mynotification (id integer primary key autoincrement,notificationid integer,notificationtitle text,notificationbody text,username text,userid text,notificationtype integer,expiredtime integer,isread integer,senddate text)";
         BOOL isCreate=[noteDB executeUpdate:strCreateTable];
         if(isCreate)
@@ -379,7 +380,7 @@
     // NSLog(@"the firstvalue is %@",_firstValue);
     //initiate the request
     NSOperationQueue *operationQueue=[[NSOperationQueue alloc]init];
-    NSLog(@"didwillappear %@",[NSThread currentThread]);
+   // NSLog(@"didwillappear %@",[NSThread currentThread]);
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:operationQueue];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:theRequest];
     //execute
@@ -390,7 +391,7 @@
 }
 -(void)checkboxClick
 {
-    NSLog(@"backbutton clicked.");
+ //   NSLog(@"backbutton clicked.");
     //[self.navigationController popViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -410,7 +411,7 @@
         NSString* str=[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
         //  NSLog(@"%@",str);
         //now parsing the xml
-        NSLog(@"didCompleteWithError %@",[NSThread currentThread]);
+       // NSLog(@"didCompleteWithError %@",[NSThread currentThread]);
         NSData *myData = [str dataUsingEncoding:NSUTF8StringEncoding];
         
         NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:myData];

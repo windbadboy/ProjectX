@@ -44,7 +44,39 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    NSLog(@"register success:%@",deviceToken);
+
+    NSString * token = [NSString stringWithFormat:@"%@", deviceToken];
+    //Format token as you need:
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
+    token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    NSLog(@"register success:%@",token);
+    NSString *webServiceBodyStr = [NSString stringWithFormat:
+                                   @"<sendtoken xmlns=\"http://tempuri.org/\"><appletoken>%@</appletoken></sendtoken>",token];//这里是参数
+    NSString *webServiceStr = [NSString stringWithFormat:
+                               @"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body />%@</soap:Envelope>",
+                               webServiceBodyStr];//webService头
+    NSURL *url = [NSURL URLWithString:@"http://183.64.36.130:8090/webservice/webservice1.asmx"];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [webServiceStr length]];
+    
+    //ad required headers to the request
+    [theRequest addValue:@"183.64.36.130:8090" forHTTPHeaderField:@"Host"];
+    [theRequest addValue: @"text/xml;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [theRequest addValue: @"http://tempuri.org/sendtoken" forHTTPHeaderField:@"SOAPAction"];
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [webServiceStr dataUsingEncoding:NSUTF8StringEncoding]];
+    // NSLog(@"the firstvalue is %@",_firstValue);
+    //initiate the request
+    NSOperationQueue *operationQueue=[[NSOperationQueue alloc]init];
+    // NSLog(@"didwillappear %@",[NSThread currentThread]);
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:operationQueue];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:theRequest];
+    //execute
+    [dataTask resume];
+    // _connect=[NSURLConnection connectionWithRequest:theRequest delegate:self];
+    _data=[[NSMutableData alloc] init];
 }
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
@@ -77,9 +109,23 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+-(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
 {
-    NSLog(@"you have chosed");
+    completionHandler(NSURLSessionResponseAllow);
+}
+
+-(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
+{
+    [_data appendData:data];
+}
+-(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
+{
+    if(error == nil)
+    {
+        NSLog(@"Token is sent successfully.");
+        
+
+    }
 }
 
 @end

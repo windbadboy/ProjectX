@@ -40,7 +40,7 @@
         [_data setLength:0];
     }
     else
-        NSLog(@"The wrong code is %i",res.statusCode);
+        NSLog(@"The wrong code is %li",(long)res.statusCode);
         
         }
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -124,7 +124,7 @@
     self.tabBarItem=tabBarItem;
     self.view.backgroundColor=[UIColor whiteColor];
     lbltodayduty=[[UILabel alloc]init];
-    lbltodayduty.frame=CGRectMake(130, 60, 180, 50);
+    lbltodayduty.frame=CGRectMake(110, 60, 180, 50);
     
     NSString *webServiceBodyStr = [NSString stringWithFormat:
                                    @"<gettodayduty xmlns=\"http://tempuri.org/\"></gettodayduty>"];//这里是参数
@@ -148,11 +148,11 @@
     _connect=[NSURLConnection connectionWithRequest:theRequest delegate:self];
     _data=[[NSMutableData alloc] init];
     lbltodayxzduty=[[UILabel alloc]init];
-    lbltodayxzduty.frame=CGRectMake(120, 100, 230, 50);
+    lbltodayxzduty.frame=CGRectMake(100, 100, 280, 50);
     UIImage* xzzb=[UIImage imageNamed:@"xzzb.png"];
     UIImageView* xzzbview=[[UIImageView alloc]init];
     xzzbview.image=xzzb;
-    xzzbview.frame=CGRectMake(50, 105, 40, 40);
+    xzzbview.frame=CGRectMake(30, 105, 40, 40);
     checkbox=[UIButton buttonWithType:UIButtonTypeCustom];
     CGRect checkboxRect = CGRectMake(10, 30, 30, 20);
     // checkbox.frame=CGRectMake(10, 30, 30, 20);
