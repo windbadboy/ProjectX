@@ -81,7 +81,7 @@
     NSString* str=[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
     //  NSLog(@"%@",str);
     //now parsing the xml
-    
+        NSLog(@"didfinishLoading %@",[NSThread currentThread]);
     NSData *myData = [str dataUsingEncoding:NSUTF8StringEncoding];
     
     NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:myData];
@@ -205,12 +205,8 @@
         }
     
       //  NSLog(@"%@",username);
-    
-    _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 60, 420, 536) style:UITableViewStylePlain];
-        [_tableView setSeparatorColor:[UIColor orangeColor]];    _tableView.delegate=self;
-    _tableView.dataSource=self;
-    [self.view addSubview:checkbox];
-    [self.view addSubview:_tableView];
+    [self performSelectorOnMainThread:@selector(updateUI) withObject:nil waitUntilDone:NO];
+
     
 }
 
@@ -382,8 +378,13 @@
     [theRequest setHTTPBody: [webServiceStr dataUsingEncoding:NSUTF8StringEncoding]];
     // NSLog(@"the firstvalue is %@",_firstValue);
     //initiate the request
-    
-    _connect=[NSURLConnection connectionWithRequest:theRequest delegate:self];
+    NSOperationQueue *operationQueue=[[NSOperationQueue alloc]init];
+    NSLog(@"didwillappear %@",[NSThread currentThread]);
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:operationQueue];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:theRequest];
+    //execute
+    [dataTask resume];
+   // _connect=[NSURLConnection connectionWithRequest:theRequest delegate:self];
     _data=[[NSMutableData alloc] init];
 
 }
@@ -392,5 +393,50 @@
     NSLog(@"backbutton clicked.");
     //[self.navigationController popViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+-(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
+{
+     completionHandler(NSURLSessionResponseAllow);
+}
+
+-(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
+{
+    [_data appendData:data];
+}
+-(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
+{
+    if(error == nil)
+    {
+        NSString* str=[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
+        //  NSLog(@"%@",str);
+        //now parsing the xml
+        NSLog(@"didCompleteWithError %@",[NSThread currentThread]);
+        NSData *myData = [str dataUsingEncoding:NSUTF8StringEncoding];
+        
+        NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:myData];
+        
+        //setting delegate of XML parser to self
+        xmlParser.delegate = self;
+        
+        // Run the parser
+        @try{
+            BOOL parsingResult = [xmlParser parse];
+            //   NSLog(@"parsing result = %hhd",parsingResult);
+        }
+        @catch (NSException* exception)
+        {
+            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"Server Error" message:[exception reason] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+            return;
+        }
+    }
+}
+-(void)updateUI
+{
+    _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 60, 420, 536) style:UITableViewStylePlain];
+    [_tableView setSeparatorColor:[UIColor orangeColor]];    _tableView.delegate=self;
+    _tableView.dataSource=self;
+    [self.view addSubview:checkbox];
+    [self.view addSubview:_tableView];
 }
 @end

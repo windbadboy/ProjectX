@@ -23,7 +23,8 @@ NSURLConnectionDelegate,
 NSURLConnectionDataDelegate,
 NSXMLParserDelegate,
 UIAlertViewDelegate,
-DetailNoteDelegate
+DetailNoteDelegate,
+NSURLSessionDelegate
 >
 {
     FMDatabase* noteDB;

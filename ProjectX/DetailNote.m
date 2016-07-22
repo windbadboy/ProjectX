@@ -166,7 +166,7 @@
 {
     NSLog(@"backbutton clicked.");
     //[self.navigationController popViewControllerAnimated:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
