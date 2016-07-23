@@ -314,8 +314,8 @@ if(getnote==1)
     strbody=[[NSMutableString alloc]init];
     self.view.backgroundColor=[UIColor whiteColor];
     UIImageView *imageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"background.png"]];
-    CGRect rx=[UIScreen mainScreen].bounds;
-    imageView.frame=rx;
+  //  CGRect rx=[UIScreen mainScreen].bounds;
+  //  imageView.frame=rx;
     [self.view addSubview:imageView];
    // UIImage *bgImage=[UIImage imageNamed:@"选项框.png"];
   //  self.view.backgroundColor=[UIColor colorWithPatternImage:bgImage];
@@ -345,7 +345,9 @@ if(getnote==1)
     _tfUsername.borderStyle=UITextBorderStyleRoundedRect;
     _tfUsername.keyboardType=UIKeyboardTypeNumberPad;
     
-    
+    _copyright=[[UILabel alloc]init];
+    _copyright.text=@"维护人员:Ted 短号:666666";
+    _copyright.font=[UIFont systemFontOfSize:14];
     _tfPassword=[[UITextField alloc] init];
     _tfPassword.frame=CGRectMake(120, 270, 180, 40);
     _tfPassword.placeholder=@"输入密码";
@@ -353,17 +355,19 @@ if(getnote==1)
     _tfPassword.secureTextEntry=YES;
     
     _btLogin=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _btLogin.frame=CGRectMake(310, 370, 80, 40);
+    //_btLogin.frame=CGRectMake(310, 370, 80, 40);
+
+   
     [_btLogin setTitle:@"登录" forState:UIControlStateNormal];
     [_btLogin addTarget:self action:@selector(pressLogin) forControlEvents:UIControlEventTouchUpInside];
     checkbox= [UIButton buttonWithType:UIButtonTypeCustom];
-    CGRect checkboxRect = CGRectMake(220,370,36,36);
-    [checkbox setFrame:checkboxRect];
+//    CGRect checkboxRect = CGRectMake(220,370,36,36);
+  //  [checkbox setFrame:checkboxRect];
     [checkbox setImage:[UIImage imageNamed:@"checkbox_off.png"] forState:UIControlStateNormal];
     [checkbox setImage:[UIImage imageNamed:@"checkbox_on.png"] forState:UIControlStateSelected];
     [checkbox addTarget:self action:@selector(checkboxClick:) forControlEvents:UIControlEventTouchUpInside];
     UILabel *rememberme=[[UILabel alloc]init];
-    rememberme.frame=CGRectMake(256, 365, 60, 46);
+ //   rememberme.frame=CGRectMake(256, 365, 60, 46);
     rememberme.text=@"记住我";
     NSUserDefaults *isrm=[NSUserDefaults standardUserDefaults];
     NSString *isrm1=[isrm objectForKey:@"isrm"];
@@ -390,6 +394,74 @@ if(getnote==1)
     [self.view addSubview:_tfUsername];
     [self.view addSubview:_tfPassword];
         [self.view addSubview:_btLogin];
+    [self.view addSubview:_copyright];
+    
+    [_btLogin mas_makeConstraints:^(MASConstraintMaker *make)
+    {
+        make.right.equalTo(self.view).offset(-16);
+        make.width.equalTo(@50);
+        make.height.equalTo(@50);
+        make.bottom.equalTo(self.view).offset(-16);
+    }];
+    [rememberme mas_makeConstraints:^(MASConstraintMaker *make)
+     {
+         make.right.equalTo(_btLogin).offset(-80);
+         make.width.equalTo(@60);
+         make.height.equalTo(@50);
+         make.bottom.equalTo(self.view).offset(-16);
+     }];
+    [checkbox mas_makeConstraints:^(MASConstraintMaker *make)
+     {
+         make.left.equalTo(rememberme).offset(56);
+         make.width.equalTo(@36);
+         make.height.equalTo(@50);
+         make.bottom.equalTo(self.view).offset(-16);
+     }];
+    [_copyright mas_makeConstraints:^(MASConstraintMaker *make)
+     {
+         make.left.equalTo(self.view).offset(16);
+         make.width.equalTo(@200);
+         make.height.equalTo(@30);
+         make.bottom.equalTo(self.view).offset(-2);
+     }];
+    
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make)
+     {
+         make.edges.equalTo(self.view);
+     }];
+//    UIView *leftbuttonView=[[UIView alloc]init];
+//    leftbuttonView.backgroundColor=[UIColor orangeColor];
+//
+//    [self.view addSubview:leftbuttonView];
+//    UIView *otherbuttonView=[[UIView alloc]init];
+//    otherbuttonView.backgroundColor=[UIColor yellowColor];
+//    
+//    [self.view addSubview:otherbuttonView];
+//    CGFloat margin=16;
+//    CGFloat height=32;
+    
+    
+//    [leftbuttonView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self.view).offset(margin);
+//        make.bottom.equalTo(self.view).offset(-margin);
+//        make.right.equalTo(otherbuttonView.mas_left).offset(-margin);
+//        make.height.mas_equalTo(height);
+//        make.width.equalTo(otherbuttonView);
+//        
+//    }];
+//    [otherbuttonView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.equalTo(@100);
+//        make.height.equalTo(@100);
+//        make.right.equalTo(self.view).offset(-16);
+//        make.bottom.equalTo(self.view).offset(-16);
+//        make.bottom.equalTo(self.view).offset(-margin);
+//        make.right.equalTo(self.view).offset(-margin);
+//        make.height.mas_equalTo(height);
+//        make.width.equalTo(@300);
+//        
+//    }];
+//        _btLogin.translatesAutoresizingMaskIntoConstraints=NO;
+
 }
 -(void)checkboxClick:(UIButton *)btn
 {

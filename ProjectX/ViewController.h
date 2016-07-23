@@ -11,6 +11,7 @@
 #import "VCSecond.h"
 #import "FMDB.h"
 #import "VCNotification.h"
+#import "Masonry.h"
 @interface ViewController : UIViewController
 
 <
@@ -34,6 +35,7 @@ UITabBarControllerDelegate
     UITextField* _tfUsername;
     UITextField* _tfPassword;
     UIButton* _btLogin;
+    UILabel* _copyright;
     FMDatabase* noteDB;
     VCNotification *vcNotification;
 }
