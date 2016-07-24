@@ -409,6 +409,7 @@ if(getnote==1)
          make.width.equalTo(@60);
          make.height.equalTo(@50);
          make.bottom.equalTo(self.view).offset(-16);
+         
      }];
     [checkbox mas_makeConstraints:^(MASConstraintMaker *make)
      {
