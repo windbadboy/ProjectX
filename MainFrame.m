@@ -14,6 +14,7 @@
     UILabel* lbltodayxzduty;
     UILabel* lbltodayduty;
     UIButton* checkbox;
+    NSTimer *timer;
 }
 @synthesize currentElement;
 -(void)viewDidLoad{
@@ -117,6 +118,7 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
+    NSLog(@"viewDidAppear");
     //   self.view.backgroundColor=[UIColor orangeColor];
     UITabBarItem* tabBarItem=[[UITabBarItem alloc]initWithTitle:@"今日值班" image:nil tag:101];
     tabBarItem.image=[UIImage imageNamed:@"duty.png"];
@@ -171,5 +173,8 @@
     //[self.navigationController popViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
+-(void)viewWillDisappear:(BOOL)animated
+{
+    NSLog(@"willdisappear");
+}
 @end
