@@ -25,6 +25,9 @@
 		9F4C6E401D40554B00F95924 /* DetailNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4C6E3F1D40554B00F95924 /* DetailNote.m */; };
 		9F6125571D37C0530054BDF6 /* checkbox_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F6125561D37C0530054BDF6 /* checkbox_on.png */; };
 		9F61255B1D37C27C0054BDF6 /* checkbox_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F61255A1D37C27C0054BDF6 /* checkbox_off.png */; };
+		9F940B771D4784D1001FF09D /* lczblogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F940B761D4784D1001FF09D /* lczblogo.png */; };
+		9F940B7A1D478989001FF09D /* todayduty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F940B791D478989001FF09D /* todayduty.m */; };
+		9F940B7D1D479020001FF09D /* mydbutil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F940B7C1D479020001FF09D /* mydbutil.m */; };
 		9F9C26911D276FA700317E2F /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C26901D276FA700317E2F /* NSString+MD5.m */; };
 		9FA0DECF1D40F60E00EFAE2D /* fold.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FA0DECE1D40F60E00EFAE2D /* fold.png */; };
 		9FA0DED11D40F6EA00EFAE2D /* unfold.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FA0DED01D40F6EA00EFAE2D /* unfold.png */; };
@@ -93,6 +96,11 @@
 		9F4C6E411D40AAA500F95924 /* DetailNoteDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailNoteDelegate.h; sourceTree = "<group>"; };
 		9F6125561D37C0530054BDF6 /* checkbox_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_on.png; sourceTree = "<group>"; };
 		9F61255A1D37C27C0054BDF6 /* checkbox_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_off.png; sourceTree = "<group>"; };
+		9F940B761D4784D1001FF09D /* lczblogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lczblogo.png; sourceTree = "<group>"; };
+		9F940B781D478989001FF09D /* todayduty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = todayduty.h; sourceTree = "<group>"; };
+		9F940B791D478989001FF09D /* todayduty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = todayduty.m; sourceTree = "<group>"; };
+		9F940B7B1D479020001FF09D /* mydbutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mydbutil.h; sourceTree = "<group>"; };
+		9F940B7C1D479020001FF09D /* mydbutil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mydbutil.m; sourceTree = "<group>"; };
 		9F9C268F1D276FA700317E2F /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		9F9C26901D276FA700317E2F /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		9FA0DECE1D40F60E00EFAE2D /* fold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fold.png; sourceTree = "<group>"; };
@@ -180,6 +188,14 @@
 			path = Masonry;
 			sourceTree = "<group>";
 		};
+		9F940B731D47793C001FF09D /* images */ = {
+			isa = PBXGroup;
+			children = (
+				9F940B761D4784D1001FF09D /* lczblogo.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		9FB329EA1D3E5638005DE587 /* fmdb */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +218,7 @@
 		9FE7AF541D254BCF000A8B93 = {
 			isa = PBXGroup;
 			children = (
+				9F940B731D47793C001FF09D /* images */,
 				9F24CB671D438E3900852B43 /* Masonry */,
 				9FB329EA1D3E5638005DE587 /* fmdb */,
 				9FB329E81D3E5510005DE587 /* libsqlite3.tbd */,
@@ -243,6 +260,8 @@
 				9F9C26901D276FA700317E2F /* NSString+MD5.m */,
 				9F36DB7F1D33E19100C67939 /* VCSecond.h */,
 				9F36DB801D33E19100C67939 /* VCSecond.m */,
+				9F940B781D478989001FF09D /* todayduty.h */,
+				9F940B791D478989001FF09D /* todayduty.m */,
 				9FB329FD1D3E7CFD005DE587 /* noteinfo.h */,
 				9FB329FE1D3E7CFD005DE587 /* noteinfo.m */,
 				9FF7005F1D3B651800F48E2F /* mydutyinfo.h */,
@@ -260,6 +279,8 @@
 				9FA0DED71D41111800EFAE2D /* back.png */,
 				9FA0DECE1D40F60E00EFAE2D /* fold.png */,
 				9FA0DED21D40FBC300EFAE2D /* xzzb.png */,
+				9F940B7B1D479020001FF09D /* mydbutil.h */,
+				9F940B7C1D479020001FF09D /* mydbutil.m */,
 			);
 			path = ProjectX;
 			sourceTree = "<group>";
@@ -340,6 +361,7 @@
 				9F6125571D37C0530054BDF6 /* checkbox_on.png in Resources */,
 				9FE7AF6D1D254BCF000A8B93 /* Assets.xcassets in Resources */,
 				9FA0DED11D40F6EA00EFAE2D /* unfold.png in Resources */,
+				9F940B771D4784D1001FF09D /* lczblogo.png in Resources */,
 				9F61255B1D37C27C0054BDF6 /* checkbox_off.png in Resources */,
 				9FA0DECF1D40F60E00EFAE2D /* fold.png in Resources */,
 				9FA0DED81D41111800EFAE2D /* back.png in Resources */,
@@ -362,6 +384,7 @@
 				9F4C6E401D40554B00F95924 /* DetailNote.m in Sources */,
 				9FF700611D3B651800F48E2F /* mydutyinfo.m in Sources */,
 				9FB329F91D3E5638005DE587 /* FMDatabasePool.m in Sources */,
+				9F940B7D1D479020001FF09D /* mydbutil.m in Sources */,
 				9FB329FB1D3E5638005DE587 /* FMResultSet.m in Sources */,
 				9F24CB881D438E3900852B43 /* MASViewConstraint.m in Sources */,
 				9F24CB8B1D438E3900852B43 /* View+MASAdditions.m in Sources */,
@@ -381,6 +404,7 @@
 				9F24CB891D438E3900852B43 /* NSArray+MASAdditions.m in Sources */,
 				9F24CB8C1D438E3900852B43 /* ViewController+MASAdditions.m in Sources */,
 				9F9C26911D276FA700317E2F /* NSString+MD5.m in Sources */,
+				9F940B7A1D478989001FF09D /* todayduty.m in Sources */,
 				9FE7AF621D254BCF000A8B93 /* main.m in Sources */,
 				9FA0DED61D4105D100EFAE2D /* checklist.m in Sources */,
 			);

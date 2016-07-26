@@ -309,7 +309,12 @@ if(getnote==1)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+
+    
+    
+
+// Do any additional setup after loading the view, typically from a nib.
     strtitle=[[NSMutableString alloc]init];
     strbody=[[NSMutableString alloc]init];
     self.view.backgroundColor=[UIColor whiteColor];

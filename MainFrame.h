@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "todayduty.h"
 @interface MainFrame : UIViewController
 <
 NSURLConnectionDelegate,
