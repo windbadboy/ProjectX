@@ -94,7 +94,7 @@
         {
         NSString *logintips=[NSString stringWithFormat:@"欢迎登录,%@(%@)",username,userid];
 
-        UIAlertView* alert1 = [[UIAlertView alloc]initWithTitle:@"提示" message:logintips delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        UIAlertView* alert1 = [[UIAlertView alloc]initWithTitle:@"欢迎" message:logintips delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert1 show];
         }
         else
@@ -306,12 +306,84 @@ if(getnote==1)
 }
 }
 
-
+-(void)statusBarOrientationChange
+{
+    UIInterfaceOrientation orientation=[[UIApplication sharedApplication]statusBarOrientation];
+    if(UIInterfaceOrientationIsLandscape(orientation))
+    {
+    NSLog(@"横屏.");
+        [_lbUserName mas_remakeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.equalTo(self.view).offset(20);
+             make.width.equalTo(@80);
+             make.height.equalTo(@50);
+             make.top.equalTo(self.view).offset(80);
+         }];
+        
+        [_lbPassword mas_remakeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.equalTo(self.view).offset(20);
+             make.width.equalTo(@80);
+             make.height.equalTo(@50);
+             make.top.equalTo(self.view).offset(140);
+         }];
+        [_tfUsername mas_remakeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.equalTo(self.view).offset(120);
+             make.width.equalTo(@180);
+             make.height.equalTo(@40);
+             make.top.equalTo(self.view).offset(80);
+         }];
+        [_tfPassword mas_remakeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.equalTo(self.view).offset(120);
+             make.width.equalTo(@180);
+             make.height.equalTo(@40);
+             make.top.equalTo(self.view).offset(140);
+         }];
+        
+    }
+    else
+    {
+        [_lbUserName mas_remakeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.equalTo(self.view).offset(20);
+             make.width.equalTo(@80);
+             make.height.equalTo(@50);
+             make.top.equalTo(self.view).offset(180);
+         }];
+        
+        [_lbPassword mas_remakeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.equalTo(self.view).offset(20);
+             make.width.equalTo(@80);
+             make.height.equalTo(@50);
+             make.top.equalTo(self.view).offset(280);
+         }];
+        [_tfUsername mas_remakeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.equalTo(self.view).offset(120);
+             make.width.equalTo(@180);
+             make.height.equalTo(@40);
+             make.top.equalTo(self.view).offset(180);
+         }];
+        [_tfPassword mas_remakeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.equalTo(self.view).offset(120);
+             make.width.equalTo(@180);
+             make.height.equalTo(@40);
+             make.top.equalTo(self.view).offset(280);
+         }];
+    }
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
 
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(statusBarOrientationChange)
+                                                 name:UIApplicationDidChangeStatusBarOrientationNotification
+                                               object:nil];
     
 
 // Do any additional setup after loading the view, typically from a nib.
@@ -324,6 +396,8 @@ if(getnote==1)
     [self.view addSubview:imageView];
    // UIImage *bgImage=[UIImage imageNamed:@"选项框.png"];
   //  self.view.backgroundColor=[UIColor colorWithPatternImage:bgImage];
+    
+    
     _lbUserName=[[UILabel alloc] init];
     _lbUserName.frame=CGRectMake(20, 180, 80, 40);
     _lbUserName.text=@"用户名";
@@ -353,6 +427,11 @@ if(getnote==1)
     _copyright=[[UILabel alloc]init];
     _copyright.text=@"维护人员:Ted 短号:666666";
     _copyright.font=[UIFont systemFontOfSize:14];
+    
+    _version=[[UILabel alloc]init];
+    _version.text=@"Ver 1.13 Icecream";
+    _version.font=[UIFont systemFontOfSize:14];
+    
     _tfPassword=[[UITextField alloc] init];
     _tfPassword.frame=CGRectMake(120, 270, 180, 40);
     _tfPassword.placeholder=@"输入密码";
@@ -400,20 +479,90 @@ if(getnote==1)
     [self.view addSubview:_tfPassword];
         [self.view addSubview:_btLogin];
     [self.view addSubview:_copyright];
+    [self.view addSubview:_version];
+
+    UIInterfaceOrientation orientation=[[UIApplication sharedApplication]statusBarOrientation];
+    if(UIInterfaceOrientationIsLandscape(orientation))
+    {
+        NSLog(@"横屏.");
+        [_lbUserName mas_makeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.equalTo(self.view).offset(20);
+             make.width.equalTo(@80);
+             make.height.equalTo(@50);
+             make.top.equalTo(self.view).offset(80);
+         }];
+        
+        [_lbPassword mas_makeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.equalTo(self.view).offset(20);
+             make.width.equalTo(@80);
+             make.height.equalTo(@50);
+             make.top.equalTo(self.view).offset(140);
+         }];
+        [_tfUsername mas_makeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.equalTo(self.view).offset(120);
+             make.width.equalTo(@180);
+             make.height.equalTo(@40);
+             make.top.equalTo(self.view).offset(80);
+         }];
+        [_tfPassword mas_makeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.equalTo(self.view).offset(120);
+             make.width.equalTo(@180);
+             make.height.equalTo(@40);
+             make.top.equalTo(self.view).offset(140);
+         }];
+        
+    }
+    else
+    {
+        [_lbUserName mas_makeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.equalTo(self.view).offset(20);
+             make.width.equalTo(@80);
+             make.height.equalTo(@50);
+             make.top.equalTo(self.view).offset(180);
+         }];
+        
+        [_lbPassword mas_makeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.equalTo(self.view).offset(20);
+             make.width.equalTo(@80);
+             make.height.equalTo(@50);
+             make.top.equalTo(self.view).offset(280);
+         }];
+        [_tfUsername mas_makeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.equalTo(self.view).offset(120);
+             make.width.equalTo(@180);
+             make.height.equalTo(@40);
+             make.top.equalTo(self.view).offset(180);
+         }];
+        [_tfPassword mas_makeConstraints:^(MASConstraintMaker *make)
+         {
+             make.left.equalTo(self.view).offset(120);
+             make.width.equalTo(@180);
+             make.height.equalTo(@40);
+             make.top.equalTo(self.view).offset(280);
+         }];
+    }
+
     
     [_btLogin mas_makeConstraints:^(MASConstraintMaker *make)
     {
         make.right.equalTo(self.view).offset(-16);
         make.width.equalTo(@50);
         make.height.equalTo(@50);
-        make.bottom.equalTo(self.view).offset(-16);
+        make.bottom.equalTo(self.view).offset(-50);
     }];
     [rememberme mas_makeConstraints:^(MASConstraintMaker *make)
      {
          make.right.equalTo(_btLogin).offset(-80);
          make.width.equalTo(@60);
          make.height.equalTo(@50);
-         make.bottom.equalTo(self.view).offset(-16);
+         make.bottom.equalTo(self.view).offset(-50);
          
      }];
     [checkbox mas_makeConstraints:^(MASConstraintMaker *make)
@@ -421,16 +570,22 @@ if(getnote==1)
          make.left.equalTo(rememberme).offset(56);
          make.width.equalTo(@36);
          make.height.equalTo(@50);
-         make.bottom.equalTo(self.view).offset(-16);
+         make.bottom.equalTo(self.view).offset(-50);
      }];
     [_copyright mas_makeConstraints:^(MASConstraintMaker *make)
      {
          make.left.equalTo(self.view).offset(16);
          make.width.equalTo(@200);
          make.height.equalTo(@30);
+         make.bottom.equalTo(self.view).offset(-26);
+     }];
+    [_version mas_makeConstraints:^(MASConstraintMaker *make)
+     {
+         make.left.equalTo(self.view).offset(16);
+         make.width.equalTo(@150);
+         make.height.equalTo(@30);
          make.bottom.equalTo(self.view).offset(-2);
      }];
-    
     [imageView mas_makeConstraints:^(MASConstraintMaker *make)
      {
          make.edges.equalTo(self.view);
@@ -569,5 +724,6 @@ if(getnote==1)
 NSUInteger indexOfTab = [tabBarController.viewControllers indexOfObject:viewController];
   //  NSLog(@"Tab index = %u", (int)indexOfTab);
 }
+
 
 @end

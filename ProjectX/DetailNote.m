@@ -106,6 +106,7 @@
                     mynoteinfo.sendtime=[result stringForColumn:@"senddate"];
                     mynoteinfo.notificationid=[result stringForColumn:@"notificationid"];
                     mynoteinfo.isread=[result stringForColumn:@"isread"];
+                  //  NSLog(@"body is %@",mynoteinfo.mybody);
                     
                     //  noteinfo* mynoteinfo2=[[noteinfo alloc]init];
                     //   mynoteinfo2=[mArray objectAtIndex:1];
@@ -119,12 +120,12 @@
                 CGSize msgSie=[mynoteinfo.mybody boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:tdic context:nil].size;
                 UILabel *textLabel  = [[UILabel alloc] init];
                 [textLabel setFont:[UIFont boldSystemFontOfSize:14]];
-                lblbody.frame = CGRectMake(10,80, 380,msgSie.height*1.3);
+                lblbody.frame = CGRectMake(10,80, 380,msgSie.height*1.8);
                 lblbody.lineBreakMode = nil;//实现文字多行显示
                 lblbody.numberOfLines = 0;
                 lbltitle.text=mynoteinfo.mytitle;
                 lblbody.text=mynoteinfo.mybody;
-              //  NSLog(@"mybody is %@",mynoteinfo.mybody);
+                NSLog(@"mybody is %@",lblbody.text);
                 self.view.backgroundColor=[UIColor whiteColor];
                 [self.view addSubview:lbltitle];
                 [self.view addSubview:lblbody];

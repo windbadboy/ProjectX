@@ -133,7 +133,7 @@
     }
     if ([currentElement isEqualToString:@"mybody"]) {
         [str2 appendString:string];
-                 //   NSLog(@"body is %@",str2);
+                //    NSLog(@"body is %@",str2);
 
     }
     if ([currentElement isEqualToString:@"notificationid"]) {

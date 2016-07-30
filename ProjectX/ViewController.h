@@ -28,7 +28,7 @@ UITabBarControllerDelegate
     NSURLConnection* _connect;
     
     NSMutableData* _data;
-
+    
     UILabel* _lbUserName;
     UILabel* _lbPassword;
     UILabel* _lbTitle;
@@ -36,6 +36,7 @@ UITabBarControllerDelegate
     UITextField* _tfPassword;
     UIButton* _btLogin;
     UILabel* _copyright;
+    UILabel* _version;
     FMDatabase* noteDB;
     VCNotification *vcNotification;
 }
