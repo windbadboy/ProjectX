@@ -124,7 +124,7 @@
         zyrs=string;
         
     //    NSLog(@"thread is %@",[NSThread currentThread]);
-        NSLog(@"zyrs is %@",zyrs);
+    //    NSLog(@"zyrs is %@",zyrs);
     }
 }
 
@@ -212,11 +212,12 @@
 -(void)timerFire
 {
     [self justdoit];
-    NSLog(@"justtodi zyrs is %@",zyrs);
+  //  NSLog(@"justtodi zyrs is %@",zyrs);
 }
 -(void)viewDidDisappear:(BOOL)animated
 {
     [_timer invalidate];
+    lblzyrs.text=@"";
 }
 -(void)justdoit
 {
@@ -292,7 +293,7 @@
                 //        if([session.sessionDescription isEqualToString:@"1"])
                 //        {
                 //           str=[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
-                    NSLog(@"%@",str);
+                //    NSLog(@"%@",str);
                 //        }
                 //    else if([session.sessionDescription isEqualToString:@"2"])
                 //    {
@@ -332,9 +333,11 @@
     _queue.maxConcurrentOperationCount=1;
     [_queue addOperations:operations waitUntilFinished:NO];
 }
+
 -(void)viewDidAppear:(BOOL)animated
 {
-    _timer=[NSTimer scheduledTimerWithTimeInterval:300 target:self selector:@selector(timerFire) userInfo:nil repeats:YES];
+   // NSLog(@"viewDidAppear");
+
   //  [_timer fire];
     
 
@@ -406,6 +409,9 @@
     UIImage* zyrsimage=[UIImage imageNamed:@"zyrs.png"];
     UIImageView* zyrsview=[[UIImageView alloc]init];
     zyrsview.image=zyrsimage;
+    UIButton* _btChangepw=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [_btChangepw setTitle:@"修改密码" forState:UIControlStateNormal];
+    [_btChangepw addTarget:self action:@selector(changepw) forControlEvents:UIControlEventTouchUpInside];
     
     
     
@@ -416,6 +422,8 @@
     [checkbox setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     [checkbox setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateSelected];
     [checkbox addTarget:self action:@selector(checkboxClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     [self.view addSubview:xzzbview];
     [self.view addSubview:lczbview];
     [self.view addSubview:lbltodayxzduty];
@@ -424,6 +432,16 @@
     [self.view addSubview:checkbox];
     [self.view addSubview:lblzyrs];
     [self.view addSubview:zyrsview];
+    [self.view addSubview:_btChangepw];
+    
+    [_btChangepw mas_makeConstraints:^(MASConstraintMaker *make)
+     {
+         make.left.equalTo(self.view).offset(0);
+         make.width.equalTo(@100);
+         make.height.equalTo(@40);
+         make.bottom.equalTo(self.view).offset(-32);
+     }];
+    
     [lbltodayduty mas_makeConstraints:^(MASConstraintMaker *make)
      {
          make.centerX.equalTo(self.view);
@@ -483,6 +501,7 @@
 //         make.bottom.equalTo(self.view).offset(-100);
 //     }];
     [self justdoit];
+        _timer=[NSTimer scheduledTimerWithTimeInterval:300 target:self selector:@selector(timerFire) userInfo:nil repeats:YES];
 }
 -(void)getsth1:(NSArray*)a
 {
@@ -595,7 +614,7 @@
 }
 
 
-
+//记住我功能
 -(void)checkboxClick
 {
   //  NSLog(@"backbutton clicked.");
@@ -676,7 +695,7 @@
 }
 -(void)updateUI
 {
-    NSLog(@"x is %d",x);
+   // NSLog(@"x is %d",x);
     if(x==1)
     {
     lbltodayduty.text=[[NSString alloc]initWithFormat:@"今日值班(%@)",pbdate];
@@ -716,5 +735,12 @@
     }
    
 }
-
+-(void)changepw
+{
+ //   NSLog(@"in changepw");
+    Changepw* changePW=[[Changepw alloc]init];
+    
+    changePW.userid=self.userid;
+    [self presentViewController:changePW animated:YES completion:nil];
+}
 @end

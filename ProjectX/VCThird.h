@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Masonry.h"
 
 @interface VCThird : UIViewController
-
+<
+UIPickerViewDelegate,
+UIPickerViewDataSource
+>
+{
+        UITableView* _tableView;
+}
 @end

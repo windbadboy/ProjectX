@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "todayduty.h"
 #import "Masonry.h"
+#import "Changepw.h"
 @interface MainFrame : UIViewController
 <
 NSURLConnectionDelegate,
@@ -24,10 +25,12 @@ NSURLSessionDelegate
     NSMutableData* _data;
         NSMutableData* _data2;
     NSLock* _lock;
+
 }
 @property NSString *currentElement;
 -(void)getsth:(int)whichone para:(NSString*)whichpara;
 
 -(NSMutableURLRequest*)getrequest:(NSString*)myrequest;
+@property(nonatomic,retain) NSString *userid;
 -(void)justdoit;
 @end

@@ -421,7 +421,7 @@
         
         // Run the parser
         @try{
-            BOOL parsingResult = [xmlParser parse];
+            [xmlParser parse];
             //   NSLog(@"parsing result = %hhd",parsingResult);
         }
         @catch (NSException* exception)

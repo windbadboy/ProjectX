@@ -135,12 +135,14 @@
             [isrm setObject:@"0" forKey:@"isrm"];
         }
         MainFrame *mainView=[[MainFrame alloc]init];
+        mainView.userid=userid;
             VCSecond *vcSecond=[[VCSecond alloc]init];
-  //  VCThird *vcThrid=[[VCThird alloc]init];
+        VCDutyrecord *vcDutyrecord=[[VCDutyrecord alloc]init];
+    VCThird *vcThrid=[[VCThird alloc]init];
         vcNotification=[[VCNotification alloc]init];
         
-    //    vcThrid.title=@"调班";
-
+        vcThrid.title=@"调班";
+        
         vcSecond.firstValue=userid;
         vcNotification.userid=userid;
         //将self赋值给代理对象mydelegate
@@ -153,10 +155,16 @@
         UITabBarItem* tabBarItem2=[[UITabBarItem alloc]initWithTitle:@"通知" image:nil tag:103];
         tabBarItem2.image=[UIImage imageNamed:@"note.png"];
      tabBarItem2.image=[UIImage imageNamed:@"note.png"];
+        UITabBarItem* tabBarItem3=[[UITabBarItem alloc]initWithTitle:@"调班" image:nil tag:104];
+        tabBarItem3.image=[UIImage imageNamed:@"tb.png"];
+        vcThrid.tabBarItem=tabBarItem3;
+        UITabBarItem* tabBarItem4=[[UITabBarItem alloc]initWithTitle:@"值班记录" image:nil tag:105];
+        tabBarItem4.image=[UIImage imageNamed:@"zbrz.png"];
+        vcDutyrecord.tabBarItem=tabBarItem4;
         vcNotification.tabBarItem=tabBarItem2;
-
+        
             UITabBarController* tbController=[[UITabBarController alloc]init];
-        NSArray* arrayVC=[NSArray arrayWithObjects:mainView, vcSecond,vcNotification,nil];
+        NSArray* arrayVC=[NSArray arrayWithObjects:mainView, vcSecond,vcNotification,vcThrid,vcDutyrecord,nil];
         tbController.viewControllers=arrayVC;
        // tbController.selectedIndex=0;
         tbController.tabBar.translucent=NO;
@@ -399,27 +407,27 @@ if(getnote==1)
     
     
     _lbUserName=[[UILabel alloc] init];
-    _lbUserName.frame=CGRectMake(20, 180, 80, 40);
+ //   _lbUserName.frame=CGRectMake(20, 180, 80, 40);
     _lbUserName.text=@"用户名";
     _lbUserName.font=[UIFont systemFontOfSize:15];
     _lbUserName.textAlignment=NSTextAlignmentLeft;
     
     
     _lbTitle=[[UILabel alloc] init];
-    _lbTitle.frame=CGRectMake(40, 30, 320, 40);
+  //  _lbTitle.frame=CGRectMake(40, 30, 320, 40);
     _lbTitle.text=@"十三院值班记录系统";
     _lbTitle.font=[UIFont systemFontOfSize:25];
     _lbTitle.textAlignment=NSTextAlignmentCenter;
 
 
     _lbPassword=[[UILabel alloc] init];
-    _lbPassword.frame=CGRectMake(20, 290, 80, 40);
+   // _lbPassword.frame=CGRectMake(20, 290, 80, 40);
     _lbPassword.text=@"密码";
     _lbPassword.font=[UIFont systemFontOfSize:15];
     _lbPassword.textAlignment=NSTextAlignmentLeft;
     
     _tfUsername=[[UITextField alloc] init];
-    _tfUsername.frame=CGRectMake(120, 180, 180, 40);
+   // _tfUsername.frame=CGRectMake(120, 180, 180, 40);
     _tfUsername.placeholder=@"输入工号或手机号";
     _tfUsername.borderStyle=UITextBorderStyleRoundedRect;
     _tfUsername.keyboardType=UIKeyboardTypeNumberPad;
@@ -433,7 +441,7 @@ if(getnote==1)
     _version.font=[UIFont systemFontOfSize:14];
     
     _tfPassword=[[UITextField alloc] init];
-    _tfPassword.frame=CGRectMake(120, 270, 180, 40);
+   // _tfPassword.frame=CGRectMake(120, 270, 180, 40);
     _tfPassword.placeholder=@"输入密码";
     _tfPassword.borderStyle=UITextBorderStyleRoundedRect;
     _tfPassword.secureTextEntry=YES;

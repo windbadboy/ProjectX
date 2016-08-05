@@ -12,6 +12,8 @@
 #import "FMDB.h"
 #import "VCNotification.h"
 #import "Masonry.h"
+#import "VCThird.h"
+#import "VCDutyrecord.h"
 @interface ViewController : UIViewController
 
 <
@@ -37,6 +39,7 @@ UITabBarControllerDelegate
     UIButton* _btLogin;
     UILabel* _copyright;
     UILabel* _version;
+
     FMDatabase* noteDB;
     VCNotification *vcNotification;
 }
