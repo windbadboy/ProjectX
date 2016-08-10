@@ -16,5 +16,7 @@ UIPickerViewDataSource
 >
 {
         UITableView* _tableView;
+        NSMutableData* _data;
 }
+@property NSString *currentElement;
 @end

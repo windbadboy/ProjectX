@@ -19,7 +19,7 @@
 @implementation ViewController
 {
     int isok;
-    NSString *userid,*username;
+    NSString *userid,*username,*roleid,*isadmin;
     UIButton *checkbox;
      NSString *sendtime,*mytitle,*mybody;
     NSString *notificationid;
@@ -127,6 +127,11 @@
         [userID setObject:userid forKey:@"userID"];
             NSUserDefaults *isrm=[NSUserDefaults standardUserDefaults];
             [isrm setObject:@"1" forKey:@"isrm"];
+        
+            NSUserDefaults *roleid2=[NSUserDefaults standardUserDefaults];
+            [roleid2 setObject:roleid forKey:@"roleid"];
+            NSUserDefaults *isadmin2=[NSUserDefaults standardUserDefaults];
+            [isadmin2 setObject:isadmin forKey:@"isadmin"];
 
         }
         else
@@ -254,6 +259,14 @@
     }
     if ([currentElement isEqualToString:@"notificationid"]) {
         notificationid=string;
+        //  NSLog(@"the note id is %@",string);
+    }
+    if ([currentElement isEqualToString:@"roleid"]) {
+        roleid=string;
+        //  NSLog(@"the note id is %@",string);
+    }
+    if ([currentElement isEqualToString:@"isadmin"]) {
+        isadmin=string;
         //  NSLog(@"the note id is %@",string);
     }
 }

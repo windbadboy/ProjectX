@@ -212,6 +212,7 @@
     dutyinfo.myweekday=myweekday;
     dutyinfo.mypbdate=pbdate;
     [mArray addObject:dutyinfo];
+        
       //  NSLog(@"%@",[mArray description]);
         }
 }
