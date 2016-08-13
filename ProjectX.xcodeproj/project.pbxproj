@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F241C781D5E0E2C007439A2 /* TVtbcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F241C771D5E0E2C007439A2 /* TVtbcell.m */; };
 		9F24CB821D438E3900852B43 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F24CB681D438E3900852B43 /* Info.plist */; };
 		9F24CB831D438E3900852B43 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F24CB6A1D438E3900852B43 /* MASCompositeConstraint.m */; };
 		9F24CB841D438E3900852B43 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F24CB6D1D438E3900852B43 /* MASConstraint.m */; };
@@ -26,6 +27,14 @@
 		9F517F001D4C62D000FFF836 /* zyrs.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F517EFF1D4C62D000FFF836 /* zyrs.png */; };
 		9F6125571D37C0530054BDF6 /* checkbox_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F6125561D37C0530054BDF6 /* checkbox_on.png */; };
 		9F61255B1D37C27C0054BDF6 /* checkbox_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F61255A1D37C27C0054BDF6 /* checkbox_off.png */; };
+		9F6DE6631D5E9E5E006F1CBD /* number.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F6DE6621D5E9E5E006F1CBD /* number.png */; };
+		9F6DE6681D5EA204006F1CBD /* tb0.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F6DE6641D5EA204006F1CBD /* tb0.png */; };
+		9F6DE6691D5EA204006F1CBD /* tb1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F6DE6651D5EA204006F1CBD /* tb1.png */; };
+		9F6DE66A1D5EA204006F1CBD /* tb2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F6DE6661D5EA204006F1CBD /* tb2.png */; };
+		9F6DE66B1D5EA204006F1CBD /* tb3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F6DE6671D5EA204006F1CBD /* tb3.png */; };
+		9F6DE66E1D5ED9DF006F1CBD /* VCmytb.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6DE66D1D5ED9DF006F1CBD /* VCmytb.m */; };
+		9F6DE6711D5F166A006F1CBD /* VCmytb_second.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6DE6701D5F166A006F1CBD /* VCmytb_second.m */; };
+		9F6DE6741D5F409E006F1CBD /* VCmytb_final.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6DE6731D5F409E006F1CBD /* VCmytb_final.m */; };
 		9F72F2201D4F791100317D3B /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F72F21E1D4F791100317D3B /* clock.png */; };
 		9F72F2211D4F791100317D3B /* zbrz.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F72F21F1D4F791100317D3B /* zbrz.png */; };
 		9F72F2251D4F7E8000317D3B /* tb.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F72F2241D4F7E8000317D3B /* tb.png */; };
@@ -63,6 +72,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F241C761D5E0E2C007439A2 /* TVtbcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVtbcell.h; sourceTree = "<group>"; };
+		9F241C771D5E0E2C007439A2 /* TVtbcell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVtbcell.m; sourceTree = "<group>"; };
 		9F24CB681D438E3900852B43 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F24CB691D438E3900852B43 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		9F24CB6A1D438E3900852B43 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
@@ -103,6 +114,17 @@
 		9F517EFF1D4C62D000FFF836 /* zyrs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zyrs.png; sourceTree = "<group>"; };
 		9F6125561D37C0530054BDF6 /* checkbox_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_on.png; sourceTree = "<group>"; };
 		9F61255A1D37C27C0054BDF6 /* checkbox_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_off.png; sourceTree = "<group>"; };
+		9F6DE6621D5E9E5E006F1CBD /* number.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = number.png; sourceTree = "<group>"; };
+		9F6DE6641D5EA204006F1CBD /* tb0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tb0.png; sourceTree = "<group>"; };
+		9F6DE6651D5EA204006F1CBD /* tb1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tb1.png; sourceTree = "<group>"; };
+		9F6DE6661D5EA204006F1CBD /* tb2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tb2.png; sourceTree = "<group>"; };
+		9F6DE6671D5EA204006F1CBD /* tb3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tb3.png; sourceTree = "<group>"; };
+		9F6DE66C1D5ED9DF006F1CBD /* VCmytb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCmytb.h; sourceTree = "<group>"; };
+		9F6DE66D1D5ED9DF006F1CBD /* VCmytb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCmytb.m; sourceTree = "<group>"; };
+		9F6DE66F1D5F166A006F1CBD /* VCmytb_second.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCmytb_second.h; path = ../VCmytb_second.h; sourceTree = "<group>"; };
+		9F6DE6701D5F166A006F1CBD /* VCmytb_second.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCmytb_second.m; path = ../VCmytb_second.m; sourceTree = "<group>"; };
+		9F6DE6721D5F409E006F1CBD /* VCmytb_final.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCmytb_final.h; sourceTree = "<group>"; };
+		9F6DE6731D5F409E006F1CBD /* VCmytb_final.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCmytb_final.m; sourceTree = "<group>"; };
 		9F72F21E1D4F791100317D3B /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		9F72F21F1D4F791100317D3B /* zbrz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zbrz.png; sourceTree = "<group>"; };
 		9F72F2241D4F7E8000317D3B /* tb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tb.png; sourceTree = "<group>"; };
@@ -205,7 +227,12 @@
 		9F940B731D47793C001FF09D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				9F6DE6641D5EA204006F1CBD /* tb0.png */,
+				9F6DE6651D5EA204006F1CBD /* tb1.png */,
+				9F6DE6661D5EA204006F1CBD /* tb2.png */,
+				9F6DE6671D5EA204006F1CBD /* tb3.png */,
 				9F72F21E1D4F791100317D3B /* clock.png */,
+				9F6DE6621D5E9E5E006F1CBD /* number.png */,
 				9F72F2241D4F7E8000317D3B /* tb.png */,
 				9F72F21F1D4F791100317D3B /* zbrz.png */,
 				9F517EFF1D4C62D000FFF836 /* zyrs.png */,
@@ -236,12 +263,12 @@
 		9FE7AF541D254BCF000A8B93 = {
 			isa = PBXGroup;
 			children = (
-				9F940B731D47793C001FF09D /* images */,
-				9F24CB671D438E3900852B43 /* Masonry */,
 				9FB329EA1D3E5638005DE587 /* fmdb */,
+				9F940B731D47793C001FF09D /* images */,
 				9FB329E81D3E5510005DE587 /* libsqlite3.tbd */,
-				9FE7AF5F1D254BCF000A8B93 /* ProjectX */,
+				9F24CB671D438E3900852B43 /* Masonry */,
 				9FE7AF5E1D254BCF000A8B93 /* Products */,
+				9FE7AF5F1D254BCF000A8B93 /* ProjectX */,
 			);
 			sourceTree = "<group>";
 		};
@@ -303,6 +330,14 @@
 				9F940B7C1D479020001FF09D /* mydbutil.m */,
 				9FBF48781D4D98BA00863B86 /* VCDutyrecord.h */,
 				9FBF48791D4D98BA00863B86 /* VCDutyrecord.m */,
+				9F241C761D5E0E2C007439A2 /* TVtbcell.h */,
+				9F241C771D5E0E2C007439A2 /* TVtbcell.m */,
+				9F6DE66C1D5ED9DF006F1CBD /* VCmytb.h */,
+				9F6DE66D1D5ED9DF006F1CBD /* VCmytb.m */,
+				9F6DE66F1D5F166A006F1CBD /* VCmytb_second.h */,
+				9F6DE6701D5F166A006F1CBD /* VCmytb_second.m */,
+				9F6DE6721D5F409E006F1CBD /* VCmytb_final.h */,
+				9F6DE6731D5F409E006F1CBD /* VCmytb_final.m */,
 			);
 			path = ProjectX;
 			sourceTree = "<group>";
@@ -378,17 +413,22 @@
 				9FF7DF391D3FB12E00E978A9 /* clock.png in Resources */,
 				9FF7DF3A1D3FB12E00E978A9 /* duty.png in Resources */,
 				9FB329FC1D3E5638005DE587 /* Info.plist in Resources */,
+				9F6DE66B1D5EA204006F1CBD /* tb3.png in Resources */,
 				9FE7AF701D254BCF000A8B93 /* LaunchScreen.storyboard in Resources */,
+				9F6DE66A1D5EA204006F1CBD /* tb2.png in Resources */,
 				9FF7DF3B1D3FB12E00E978A9 /* note.png in Resources */,
 				9FA0DED31D40FBC300EFAE2D /* xzzb.png in Resources */,
 				9F6125571D37C0530054BDF6 /* checkbox_on.png in Resources */,
+				9F6DE6691D5EA204006F1CBD /* tb1.png in Resources */,
 				9FE7AF6D1D254BCF000A8B93 /* Assets.xcassets in Resources */,
 				9FA0DED11D40F6EA00EFAE2D /* unfold.png in Resources */,
 				9F72F2201D4F791100317D3B /* clock.png in Resources */,
 				9F72F2211D4F791100317D3B /* zbrz.png in Resources */,
 				9F940B771D4784D1001FF09D /* lczblogo.png in Resources */,
+				9F6DE6631D5E9E5E006F1CBD /* number.png in Resources */,
 				9F517F001D4C62D000FFF836 /* zyrs.png in Resources */,
 				9F61255B1D37C27C0054BDF6 /* checkbox_off.png in Resources */,
+				9F6DE6681D5EA204006F1CBD /* tb0.png in Resources */,
 				9FA0DECF1D40F60E00EFAE2D /* fold.png in Resources */,
 				9FA0DED81D41111800EFAE2D /* back.png in Resources */,
 				9FACB42E1D3B0B4E00FBBE8D /* tabitem.png in Resources */,
@@ -409,19 +449,23 @@
 				9F24CB851D438E3900852B43 /* MASConstraintMaker.m in Sources */,
 				9F4C6E401D40554B00F95924 /* DetailNote.m in Sources */,
 				9FBF487D1D4DC22E00863B86 /* Changepw.m in Sources */,
+				9F241C781D5E0E2C007439A2 /* TVtbcell.m in Sources */,
 				9FF700611D3B651800F48E2F /* mydutyinfo.m in Sources */,
 				9FB329F91D3E5638005DE587 /* FMDatabasePool.m in Sources */,
 				9F940B7D1D479020001FF09D /* mydbutil.m in Sources */,
 				9FB329FB1D3E5638005DE587 /* FMResultSet.m in Sources */,
 				9F24CB881D438E3900852B43 /* MASViewConstraint.m in Sources */,
+				9F6DE66E1D5ED9DF006F1CBD /* VCmytb.m in Sources */,
 				9F24CB8B1D438E3900852B43 /* View+MASAdditions.m in Sources */,
 				9F24CB831D438E3900852B43 /* MASCompositeConstraint.m in Sources */,
 				9FE7AF681D254BCF000A8B93 /* ViewController.m in Sources */,
 				9F29990B1D325AD500211EE8 /* MainFrame.m in Sources */,
 				9FB329FA1D3E5638005DE587 /* FMDatabaseQueue.m in Sources */,
+				9F6DE6741D5F409E006F1CBD /* VCmytb_final.m in Sources */,
 				9F24CB861D438E3900852B43 /* MASLayoutConstraint.m in Sources */,
 				9FB329F71D3E5638005DE587 /* FMDatabase.m in Sources */,
 				9F36DB811D33E19100C67939 /* VCSecond.m in Sources */,
+				9F6DE6711D5F166A006F1CBD /* VCmytb_second.m in Sources */,
 				9F36DB8A1D33E40F00C67939 /* VCNotification.m in Sources */,
 				9F36DB841D33E1A200C67939 /* VCThird.m in Sources */,
 				9FB329F81D3E5638005DE587 /* FMDatabaseAdditions.m in Sources */,

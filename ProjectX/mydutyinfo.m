@@ -10,7 +10,7 @@
 
 @implementation mydutyinfo
 -(NSString*)description{
-    return [NSString stringWithFormat:@"%@,%@,%@",self.myusername,self.myweekday,self.myweekday];
+    return [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@",self.myusername,self.myweekday,self.myrolename,self.myroleid,self.myuserid,self.mypbdate];
 }
 -(NSString *)descriptionWithLocale:(id)locale
 {

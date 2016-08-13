@@ -28,6 +28,9 @@
     BOOL isOpen;
     int getnote;
         NSMutableString *strtitle,*strbody;
+    NSString *tbinfo1;//我的调班单
+    NSString *tbinfo2;//找我的调班单
+    NSString *tbinfo3;//需审核的调班单
 }
 
 @synthesize celsiusText,currentElement;
@@ -89,9 +92,11 @@
     }
     if(isok==1)
     {
+        
         //getnote==0表示第一次登陆验证,==1表示已经验证成功,需要读取xml通知
         if(getnote==0)
         {
+                        [self justdoit];
         NSString *logintips=[NSString stringWithFormat:@"欢迎登录,%@(%@)",username,userid];
 
         UIAlertView* alert1 = [[UIAlertView alloc]initWithTitle:@"欢迎" message:logintips delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -99,7 +104,7 @@
         }
         else
         {
-            
+
         }
 
         
@@ -136,6 +141,13 @@
         }
         else
         {
+            NSUserDefaults *userID=[NSUserDefaults standardUserDefaults];
+            [userID setObject:userid forKey:@"userID"];
+            NSUserDefaults *roleid2=[NSUserDefaults standardUserDefaults];
+            [roleid2 setObject:roleid forKey:@"roleid"];
+            NSUserDefaults *isadmin2=[NSUserDefaults standardUserDefaults];
+            [isadmin2 setObject:isadmin forKey:@"isadmin"];
+            
             NSUserDefaults *isrm=[NSUserDefaults standardUserDefaults];
             [isrm setObject:@"0" forKey:@"isrm"];
         }
@@ -148,6 +160,8 @@
         
         vcThrid.title=@"调班";
         
+
+
         vcSecond.firstValue=userid;
         vcNotification.userid=userid;
         //将self赋值给代理对象mydelegate
@@ -167,14 +181,36 @@
         tabBarItem4.image=[UIImage imageNamed:@"zbrz.png"];
         vcDutyrecord.tabBarItem=tabBarItem4;
         vcNotification.tabBarItem=tabBarItem2;
-        
+        //NSLog(@"is %@",tbinfo1);
+        if(isadmin==@"1")
+        {
+            int i=[tbinfo1 intValue]+[tbinfo2 intValue]+[tbinfo3 intValue];
+            if(i>0)
+            {
+                vcThrid.tabBarItem.badgeValue=[NSString stringWithFormat:@"%i",i];
+            }
+            else{
+                vcThrid.tabBarItem.badgeValue=nil;
+            }
+        }
+        else
+        {
+            int i=[tbinfo1 intValue]+[tbinfo2 intValue];
+            if(i>0)
+            {
+                vcThrid.tabBarItem.badgeValue=[NSString stringWithFormat:@"%i",i];
+            }
+            else{
+                vcThrid.tabBarItem.badgeValue=nil;
+            }
+        }
             UITabBarController* tbController=[[UITabBarController alloc]init];
         NSArray* arrayVC=[NSArray arrayWithObjects:mainView, vcSecond,vcNotification,vcThrid,vcDutyrecord,nil];
         tbController.viewControllers=arrayVC;
        // tbController.selectedIndex=0;
         tbController.tabBar.translucent=NO;
         [tbController setDelegate:self];
-        
+
         getnote=1;
     //    [self.navigationController pushViewController:tbController animated:YES];
         [self presentViewController:tbController animated:YES completion:nil];
@@ -269,6 +305,24 @@
         isadmin=string;
         //  NSLog(@"the note id is %@",string);
     }
+    if ([currentElement isEqualToString:@"tbinfo1"]) {
+        tbinfo1=string;
+        
+        
+         //   NSLog(@"isok is %@",tbinfo1);
+    }
+    if ([currentElement isEqualToString:@"tbinfo2"]) {
+        tbinfo2=string;
+        
+        
+        //    NSLog(@"isok is %i",isok+"");
+    }
+    if ([currentElement isEqualToString:@"tbinfo3"]) {
+        
+        tbinfo3=string;
+        
+        //    NSLog(@"isok is %i",isok+"");
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName
@@ -304,27 +358,41 @@
 }
 -(void)parserDidEndDocument:(NSXMLParser *)parser
 {
-if(getnote==1)
-{
-    int mycount = [noteDB intForQuery:@"SELECT COUNT(*) FROM mynotification where isread=0"];
-    if(mycount==0)
-    {
-        vcNotification.tabBarItem.badgeValue=nil;
-    }
-    else
-    {
-    vcNotification.tabBarItem.badgeValue=[[NSString alloc]initWithFormat:@"%d",mycount];
-    //    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-      //  localNotification.applicationIconBadgeNumber = mycount;
-        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:mycount];
-    }
-    vcNotification.firstValue=[[NSString alloc]initWithFormat:@"%d",mycount];
-    BOOL isClose=[noteDB close];
-    if(isClose)
-    {
-    //    NSLog(@"关闭数据库成功.");
-    }
+
+      //      NSLog(@"tbinfo length is %@",tbinfo1);
+        [self performSelectorOnMainThread:@selector(updateUI) withObject:nil waitUntilDone:YES];
+
+    
+
 }
+
+
+-(void)updateUI
+{
+    if(getnote==1)
+    {
+        int mycount = [noteDB intForQuery:@"SELECT COUNT(*) FROM mynotification where isread=0"];
+        if(mycount==0)
+        {
+            vcNotification.tabBarItem.badgeValue=nil;
+            
+        }
+        else
+        {
+            vcNotification.tabBarItem.badgeValue=[[NSString alloc]initWithFormat:@"%d",mycount];
+            //    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+            //  localNotification.applicationIconBadgeNumber = mycount;
+            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:mycount];
+        }
+        vcNotification.firstValue=[[NSString alloc]initWithFormat:@"%d",mycount];
+        
+        
+        BOOL isClose=[noteDB close];
+        if(isClose)
+        {
+            //    NSLog(@"关闭数据库成功.");
+        }
+    }
 }
 
 -(void)statusBarOrientationChange
@@ -397,6 +465,85 @@ if(getnote==1)
          }];
     }
 }
+
+-(void)justdoit
+{
+    _data=[[NSMutableData alloc] init];
+    
+    NSMutableArray *operations=[NSMutableArray array];
+    NSArray *a=[NSArray arrayWithObjects:@"userid",@"roleid",nil];
+    NSArray *b=[NSArray arrayWithObjects:userid,roleid, nil];
+    
+    
+    NSMutableURLRequest *therequest=[self getrequest:@"gettb" paras:a parascontent:b];
+    NSURLSession *urlSession = [NSURLSession sharedSession];
+    NSOperation *operation =[NSBlockOperation blockOperationWithBlock:^{
+        NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:therequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if(data)
+            {
+                [_data appendData:data];
+            }
+            if(error==nil)
+            {
+                
+                
+                NSString* str;
+                str=[[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
+                NSData *myData = [str dataUsingEncoding:NSUTF8StringEncoding];
+                
+                NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:myData];
+                
+                //setting delegate of XML parser to self
+                xmlParser.delegate = self;
+                
+                // Run the parser
+                @try{
+                    BOOL parsingResult = [xmlParser parse];
+                    //   NSLog(@"parsing result = %hhd",parsingResult);
+                }
+                @catch (NSException* exception)
+                {
+                    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"Server Error" message:[exception reason] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alert show];
+                    return;
+                }
+                
+                
+            }
+        }];
+        [dataTask resume];
+    }];
+    [operations addObject:operation];
+    NSOperationQueue* _queue=[[NSOperationQueue alloc]init];
+    _queue.maxConcurrentOperationCount=1;
+    [_queue addOperations:operations waitUntilFinished:NO];
+}
+
+-(NSMutableURLRequest*)getrequest:(NSString *)myrequest paras:(NSArray*)a parascontent:(NSArray*)b
+{
+    
+    
+    NSString *webServiceBodyStr = [NSString stringWithFormat:
+                                   @"<%@ xmlns=\"http://tempuri.org/\"><userid>%@</userid><roleid>%@</roleid></%@>",myrequest,userid,roleid,myrequest];//这里是参数
+    NSString *webServiceStr = [NSString stringWithFormat:
+                               @"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body />%@</soap:Envelope>",
+                               webServiceBodyStr];//webService头
+    NSURL *url = [NSURL URLWithString:@"http://183.64.36.130:8090/webservice/webservice1.asmx"];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    NSString *msgLength = [NSString stringWithFormat:@"%d", [webServiceStr length]];
+    
+    //ad required headers to the request
+    [theRequest addValue:@"183.64.36.130:8090" forHTTPHeaderField:@"Host"];
+    [theRequest addValue: @"text/xml;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [theRequest addValue: [NSString stringWithFormat:@"http://tempuri.org/%@",myrequest] forHTTPHeaderField:@"SOAPAction"];
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [webServiceStr dataUsingEncoding:NSUTF8StringEncoding]];
+    NSLog(@"%@",webServiceStr);
+    return theRequest;
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -405,8 +552,13 @@ if(getnote==1)
                                              selector:@selector(statusBarOrientationChange)
                                                  name:UIApplicationDidChangeStatusBarOrientationNotification
                                                object:nil];
-    
 
+tbinfo1=@"0";
+tbinfo2=@"0";
+tbinfo3=@"0";
+
+    
+    
 // Do any additional setup after loading the view, typically from a nib.
     strtitle=[[NSMutableString alloc]init];
     strbody=[[NSMutableString alloc]init];
@@ -502,10 +654,12 @@ if(getnote==1)
     [self.view addSubview:_copyright];
     [self.view addSubview:_version];
 
+    
     UIInterfaceOrientation orientation=[[UIApplication sharedApplication]statusBarOrientation];
     if(UIInterfaceOrientationIsLandscape(orientation))
     {
         NSLog(@"横屏.");
+
         [_lbUserName mas_makeConstraints:^(MASConstraintMaker *make)
          {
              make.left.equalTo(self.view).offset(20);
@@ -607,6 +761,9 @@ if(getnote==1)
          make.height.equalTo(@30);
          make.bottom.equalTo(self.view).offset(-2);
      }];
+    
+
+    
     [imageView mas_makeConstraints:^(MASConstraintMaker *make)
      {
          make.edges.equalTo(self.view);

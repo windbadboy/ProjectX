@@ -7,7 +7,7 @@
 //
 
 #import "VCThird.h"
-
+#import "TVtbcell.h"
 @implementation VCThird
 {
 NSString *userid;
@@ -16,6 +16,8 @@ NSString *isadmin;
     NSString *tbinfo1;//我的调班单
     NSString *tbinfo2;//找我的调班单
     NSString *tbinfo3;//需审核的调班单
+    
+        UIButton *checkbox;
 }
 @synthesize currentElement;
 -(void)viewDidAppear:(BOOL)animated
@@ -80,18 +82,57 @@ NSString *isadmin;
 {
     _tableView=[[UITableView alloc] init];
     self.view.backgroundColor=[UIColor whiteColor];
-    [_tableView setSeparatorColor:[UIColor orangeColor]];
+   // [_tableView setSeparatorColor:[UIColor orangeColor]];
     _tableView.delegate=self;
     _tableView.dataSource=self;
+  //  [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+  //  [_tableView setSeparatorColor:[UIColor orangeColor]];
+
     [self.view addSubview:_tableView];
+    
+
+    if(isadmin==@"1")
+    {
+            int i=[tbinfo1 intValue]+[tbinfo2 intValue]+[tbinfo3 intValue];
+    if(i>0)
+    {
+    self.tabBarItem.badgeValue=[NSString stringWithFormat:@"%i",i];
+    }
+        else
+        {
+                self.tabBarItem.badgeValue=nil;
+        }
+    }
+    else
+    {
+        int i=[tbinfo1 intValue]+[tbinfo2 intValue];
+        if(i>0)
+        {
+            self.tabBarItem.badgeValue=[NSString stringWithFormat:@"%i",i];
+        }
+        else
+        {
+            self.tabBarItem.badgeValue=nil;
+        }
+    }
+    
     
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make)
      {
          make.width.equalTo(self.view);
          make.left.equalTo(self.view);
-         make.top.equalTo(self.view).offset(32);
+         make.top.equalTo(self.view).offset(64);
          make.height.equalTo(self.view);
      }];
+    
+    checkbox=[UIButton buttonWithType:UIButtonTypeCustom];
+    CGRect checkboxRect = CGRectMake(10, 30, 30, 20);
+    // checkbox.frame=CGRectMake(10, 30, 30, 20);
+    [checkbox setFrame:checkboxRect];
+    [checkbox setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    [checkbox setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateSelected];
+    [checkbox addTarget:self action:@selector(checkboxClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:checkbox];
 
 }
 
@@ -109,40 +150,80 @@ NSString *isadmin;
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString* cellStr=@"cell";
-    UITableViewCell* cell=[_tableView dequeueReusableCellWithIdentifier:cellStr];
+    TVtbcell* cell=[_tableView dequeueReusableCellWithIdentifier:cellStr];
     if(cell==nil)
     {
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellStr];
+        cell=[[TVtbcell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr];
+          //  [_tableView setSeparatorColor:[UIColor orangeColor]];
+
     }
+
+    
     
 
     switch (indexPath.section) {
         case 0:
-                cell.textLabel.text=@"我要调班";
+        {
+            UIImage* _imgtitlelogo=[UIImage imageNamed:@"tb1.png"];
+            [cell settitle:@"我要调班" txtnumbers:nil  img:nil img2:_imgtitlelogo];
             break;
+        }
         case 1:
-                cell.textLabel.text=@"我的调班单";
+        {
+                        UIImage* _imgtitlelogo=[UIImage imageNamed:@"tb0.png"];
+            UIImage* _img=[UIImage imageNamed:@"number"];
+            if([tbinfo1 intValue]>0)
+            {
+            [cell settitle:@"我的调班单" txtnumbers:tbinfo1 img:_img img2:_imgtitlelogo];
+            }
+            else
+            {
+             [cell settitle:@"我的调班单" txtnumbers:nil img:nil img2:_imgtitlelogo];
+            }
             break;
+        }
         case 2:
-                cell.textLabel.text=@"找我的调班单";
+        {
+            UIImage* _imgtitlelogo=[UIImage imageNamed:@"tb2.png"];
+            UIImage* _img=[UIImage imageNamed:@"number"];
+            if([tbinfo2 intValue]>0)
+            {
+            [cell settitle:@"找我的调班单" txtnumbers:tbinfo2 img:_img img2:_imgtitlelogo];
+            }
+            else
+            {
+            [cell settitle:@"找我的调班单" txtnumbers:nil img:nil img2:_imgtitlelogo];
+            }
             break;
+        }
         case 3:
-                cell.textLabel.text=@"需审核的调班";
+        {
+                        UIImage* _imgtitlelogo=[UIImage imageNamed:@"tb3.png"];
+            UIImage* _img=[UIImage imageNamed:@"number"];
+            if([tbinfo3 intValue]>0)
+            {
+                [cell settitle:@"需审核的调班单" txtnumbers:tbinfo3 img:_img img2:_imgtitlelogo];
+            }
+            else
+            {
+                [cell settitle:@"需审核的调班单" txtnumbers:nil img:nil img2:_imgtitlelogo];
+            }
             break;
+        }
         default:
             break;
     }
 
     //子标题
 
-        cell.detailTextLabel.text=@"test";
-       NSString* str1=[NSString stringWithFormat:@"unfold.png"];
+     //   cell.detailTextLabel.text=@"test";
+     //  NSString* str1=[NSString stringWithFormat:@"unfold.png"];
 
     //图片
     
-    UIImage* image=[UIImage imageNamed:str1];
-    UIImageView *iView=[[UIImageView alloc] initWithImage:image];
-    cell.imageView.image=image;
+//    UIImage* image=[UIImage imageNamed:str1];
+//    UIImageView *iView=[[UIImageView alloc] initWithImage:image];
+//    cell.imageView.image=image;
 
     return cell;
     
@@ -151,7 +232,27 @@ NSString *isadmin;
 //tabview click event
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    switch (indexPath.section) {
+        case 0:
+        {
+            if([tbinfo1 intValue]+[tbinfo2 intValue]>0)
+            {
+                NSString *logintips=[NSString stringWithFormat:@"您有未处理完成的调班单."];
+                
+                UIAlertView* alert1 = [[UIAlertView alloc]initWithTitle:@"提示" message:logintips delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alert1 show];
+            }
+            else
+            {
+                VCmytb* vcMytb=[[VCmytb alloc]init];
+                    [self presentViewController:vcMytb animated:NO completion:nil];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
     
 }
 //每行高度
@@ -160,23 +261,23 @@ NSString *isadmin;
     return 80;
 }
 //标题
--(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if(section==0)
-    {
-    return @"我要调班";
-    }
-    else if(section==1)
-        {
-            return @"我的调班单";
-        }
-        else if(section==2)
-        {
-            return @"找我的调班单";
-        }else{
-    return @"需审核的调班单";
-        }
-}
+//-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    if(section==0)
+//    {
+//    return @"我要调班";
+//    }
+//    else if(section==1)
+//        {
+//            return @"我的调班单";
+//        }
+//        else if(section==2)
+//        {
+//            return @"找我的调班单";
+//        }else{
+//    return @"需审核的调班单";
+//        }
+//}
 
 -(void)justdoit
 {
@@ -301,5 +402,10 @@ NSString *isadmin;
 
         [self performSelectorOnMainThread:@selector(updateUI) withObject:nil waitUntilDone:YES];
 }
-
+-(void)checkboxClick
+{
+    //   NSLog(@"backbutton clicked.");
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

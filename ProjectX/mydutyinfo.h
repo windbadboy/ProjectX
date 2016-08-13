@@ -14,4 +14,5 @@
 @property (strong,nonatomic)NSString* myrolename;
 @property (strong,nonatomic)NSString* myweekday;
 @property (strong,nonatomic)NSString* mypbdate;
+@property (strong,nonatomic)NSString* myroleid;
 @end
