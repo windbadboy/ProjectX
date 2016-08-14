@@ -58,6 +58,9 @@
 		9FB329FF1D3E7CFD005DE587 /* noteinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB329FE1D3E7CFD005DE587 /* noteinfo.m */; };
 		9FBF487A1D4D98BA00863B86 /* VCDutyrecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBF48791D4D98BA00863B86 /* VCDutyrecord.m */; };
 		9FBF487D1D4DC22E00863B86 /* Changepw.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBF487C1D4DC22E00863B86 /* Changepw.m */; };
+		9FD4244D1D603052009BC052 /* VCmytbdetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4244C1D603052009BC052 /* VCmytbdetail.m */; };
+		9FD424501D6036B7009BC052 /* tbdetailinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4244F1D6036B7009BC052 /* tbdetailinfo.m */; };
+		9FD424531D603B8B009BC052 /* TVtbdetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD424521D603B8B009BC052 /* TVtbdetail.m */; };
 		9FE7AF621D254BCF000A8B93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE7AF611D254BCF000A8B93 /* main.m */; };
 		9FE7AF651D254BCF000A8B93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE7AF641D254BCF000A8B93 /* AppDelegate.m */; };
 		9FE7AF681D254BCF000A8B93 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE7AF671D254BCF000A8B93 /* ViewController.m */; };
@@ -161,6 +164,12 @@
 		9FBF48791D4D98BA00863B86 /* VCDutyrecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDutyrecord.m; sourceTree = "<group>"; };
 		9FBF487B1D4DC22E00863B86 /* Changepw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Changepw.h; sourceTree = "<group>"; };
 		9FBF487C1D4DC22E00863B86 /* Changepw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Changepw.m; sourceTree = "<group>"; };
+		9FD4244B1D603052009BC052 /* VCmytbdetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCmytbdetail.h; sourceTree = "<group>"; };
+		9FD4244C1D603052009BC052 /* VCmytbdetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCmytbdetail.m; sourceTree = "<group>"; };
+		9FD4244E1D6036B7009BC052 /* tbdetailinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tbdetailinfo.h; sourceTree = "<group>"; };
+		9FD4244F1D6036B7009BC052 /* tbdetailinfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tbdetailinfo.m; sourceTree = "<group>"; };
+		9FD424511D603B8B009BC052 /* TVtbdetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVtbdetail.h; sourceTree = "<group>"; };
+		9FD424521D603B8B009BC052 /* TVtbdetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVtbdetail.m; sourceTree = "<group>"; };
 		9FE7AF5D1D254BCF000A8B93 /* 值班通.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "值班通.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FE7AF611D254BCF000A8B93 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9FE7AF631D254BCF000A8B93 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -338,6 +347,12 @@
 				9F6DE6701D5F166A006F1CBD /* VCmytb_second.m */,
 				9F6DE6721D5F409E006F1CBD /* VCmytb_final.h */,
 				9F6DE6731D5F409E006F1CBD /* VCmytb_final.m */,
+				9FD4244B1D603052009BC052 /* VCmytbdetail.h */,
+				9FD4244C1D603052009BC052 /* VCmytbdetail.m */,
+				9FD4244E1D6036B7009BC052 /* tbdetailinfo.h */,
+				9FD4244F1D6036B7009BC052 /* tbdetailinfo.m */,
+				9FD424511D603B8B009BC052 /* TVtbdetail.h */,
+				9FD424521D603B8B009BC052 /* TVtbdetail.m */,
 			);
 			path = ProjectX;
 			sourceTree = "<group>";
@@ -450,6 +465,7 @@
 				9F4C6E401D40554B00F95924 /* DetailNote.m in Sources */,
 				9FBF487D1D4DC22E00863B86 /* Changepw.m in Sources */,
 				9F241C781D5E0E2C007439A2 /* TVtbcell.m in Sources */,
+				9FD424501D6036B7009BC052 /* tbdetailinfo.m in Sources */,
 				9FF700611D3B651800F48E2F /* mydutyinfo.m in Sources */,
 				9FB329F91D3E5638005DE587 /* FMDatabasePool.m in Sources */,
 				9F940B7D1D479020001FF09D /* mydbutil.m in Sources */,
@@ -461,6 +477,7 @@
 				9FE7AF681D254BCF000A8B93 /* ViewController.m in Sources */,
 				9F29990B1D325AD500211EE8 /* MainFrame.m in Sources */,
 				9FB329FA1D3E5638005DE587 /* FMDatabaseQueue.m in Sources */,
+				9FD4244D1D603052009BC052 /* VCmytbdetail.m in Sources */,
 				9F6DE6741D5F409E006F1CBD /* VCmytb_final.m in Sources */,
 				9F24CB861D438E3900852B43 /* MASLayoutConstraint.m in Sources */,
 				9FB329F71D3E5638005DE587 /* FMDatabase.m in Sources */,
@@ -476,6 +493,7 @@
 				9F24CB8C1D438E3900852B43 /* ViewController+MASAdditions.m in Sources */,
 				9F9C26911D276FA700317E2F /* NSString+MD5.m in Sources */,
 				9F940B7A1D478989001FF09D /* todayduty.m in Sources */,
+				9FD424531D603B8B009BC052 /* TVtbdetail.m in Sources */,
 				9FE7AF621D254BCF000A8B93 /* main.m in Sources */,
 				9FA0DED61D4105D100EFAE2D /* checklist.m in Sources */,
 				9FBF487A1D4D98BA00863B86 /* VCDutyrecord.m in Sources */,

@@ -208,7 +208,7 @@ if([isok isEqualToString:@"yes"])
     UIAlertView* alert1 = [[UIAlertView alloc]initWithTitle:@"提示" message:logintips delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
     [alert1 show];
     btnrefer.hidden=YES;
-    NSDate *date = [NSDate date];//这个是NSDate类型的日期，所要获取的年月日都放在这里；
+ //   NSDate *date = [NSDate date];//这个是NSDate类型的日期，所要获取的年月日都放在这里；
     
 //    NSCalendar *cal = [NSCalendar currentCalendar];
 //    unsigned int unitFlags = NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit;
@@ -216,6 +216,8 @@ if([isok isEqualToString:@"yes"])
     
  //   mystatus.text=[NSString stringWithFormat:@"已提交(提交人:%@[%@-%@-%@])",self.username1,[d year]];
     mystatus.text=[NSString stringWithFormat:@"状态:等待被调班人同意"];
+    [self.presentingViewController.presentingViewController.presentingViewController dismissViewControllerAnimated:NO completion:nil];
+        //[self dismissViewControllerAnimated:YES completion:nil];
     
 }
     else
@@ -226,6 +228,7 @@ if([isok isEqualToString:@"yes"])
     }
     
 }
+
 -(void)pressrefer
 {
     NSString *logintips=[NSString stringWithFormat:@"确认提交吗?"];
@@ -239,6 +242,7 @@ if([isok isEqualToString:@"yes"])
 //buttonindex: 0代表取消,1代表确认
     if(buttonIndex==1)
     {
+       // NSLog(@"did");
         [self justdoit];
     }
 }

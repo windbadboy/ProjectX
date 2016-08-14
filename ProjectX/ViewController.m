@@ -210,7 +210,6 @@
        // tbController.selectedIndex=0;
         tbController.tabBar.translucent=NO;
         [tbController setDelegate:self];
-
         getnote=1;
     //    [self.navigationController pushViewController:tbController animated:YES];
         [self presentViewController:tbController animated:YES completion:nil];
@@ -400,7 +399,7 @@
     UIInterfaceOrientation orientation=[[UIApplication sharedApplication]statusBarOrientation];
     if(UIInterfaceOrientationIsLandscape(orientation))
     {
-    NSLog(@"横屏.");
+   // NSLog(@"横屏.");
         [_lbUserName mas_remakeConstraints:^(MASConstraintMaker *make)
          {
              make.left.equalTo(self.view).offset(20);
@@ -539,7 +538,7 @@
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
     [theRequest setHTTPBody: [webServiceStr dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(@"%@",webServiceStr);
+   // NSLog(@"%@",webServiceStr);
     return theRequest;
     
 }

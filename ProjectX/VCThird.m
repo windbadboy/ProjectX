@@ -16,7 +16,7 @@ NSString *isadmin;
     NSString *tbinfo1;//我的调班单
     NSString *tbinfo2;//找我的调班单
     NSString *tbinfo3;//需审核的调班单
-    
+    NSTimer *_timer;
         UIButton *checkbox;
 }
 @synthesize currentElement;
@@ -28,7 +28,6 @@ NSString *isadmin;
 //    pickerView.delegate=self;
 //    pickerView.dataSource=self;
 //    [self.view addSubview:pickerView];
-    
     NSUserDefaults *roleid2=[NSUserDefaults standardUserDefaults];
     roleid=[roleid2 objectForKey:@"roleid"];
     NSUserDefaults *isadmin2=[NSUserDefaults standardUserDefaults];
@@ -36,6 +35,7 @@ NSString *isadmin;
     NSUserDefaults *userid2=[NSUserDefaults standardUserDefaults];
     userid=[userid2 objectForKey:@"userID"];
    // [self updateUI];
+    _timer=[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(timerFire) userInfo:nil repeats:YES];
     [self justdoit];
 }
 //实现获取组数的协议函数
@@ -77,7 +77,15 @@ NSString *isadmin;
 //    return iView;
 //}
 
-
+-(void)timerFire
+{
+    [self justdoit];
+    //  NSLog(@"justtodi zyrs is %@",zyrs);
+}
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [_timer invalidate];
+}
 -(void)updateUI
 {
     _tableView=[[UITableView alloc] init];
@@ -249,6 +257,14 @@ NSString *isadmin;
             }
         }
             break;
+        case 1:
+        {
+            VCmytbdetail* mytbDetail=[[VCmytbdetail alloc]init];
+            mytbDetail.whichone=@"1";
+            [self presentViewController:mytbDetail animated:NO completion:nil];
+            
+        }
+            break;
             
         default:
             break;
@@ -352,7 +368,7 @@ NSString *isadmin;
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [theRequest setHTTPMethod:@"POST"];
     [theRequest setHTTPBody: [webServiceStr dataUsingEncoding:NSUTF8StringEncoding]];
-        NSLog(@"%@",webServiceStr);
+     //   NSLog(@"%@",webServiceStr);
     return theRequest;
 
 }
