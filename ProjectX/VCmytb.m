@@ -283,7 +283,7 @@
 {
     //   NSLog(@"backbutton clicked.");
     //[self.navigationController popViewControllerAnimated:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 @end

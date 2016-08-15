@@ -22,6 +22,9 @@
 
 -(void)viewDidLoad
 {
+    NSUserDefaults *roleid2=[NSUserDefaults standardUserDefaults];
+    roleid=[roleid2 objectForKey:@"roleid"];
+
     checkbox=[UIButton buttonWithType:UIButtonTypeCustom];
     CGRect checkboxRect = CGRectMake(10, 30, 30, 20);
     // checkbox.frame=CGRectMake(10, 30, 30, 20);
@@ -43,7 +46,7 @@
 
     
     NSString *webServiceBodyStr = [NSString stringWithFormat:
-                                   @"<getrunningpbk xmlns=\"http://tempuri.org/\"><userid>%@</userid><roleid>%@</roleid></getrunningpbk>",_firstValue,@"2"];//这里是参数
+                                   @"<getrunningpbk xmlns=\"http://tempuri.org/\"><userid>%@</userid><roleid>%@</roleid></getrunningpbk>",_firstValue,roleid];//这里是参数
     NSString *webServiceStr = [NSString stringWithFormat:
                                @"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body />%@</soap:Envelope>",
                                webServiceBodyStr];//webService头
@@ -121,7 +124,7 @@
     NSHTTPURLResponse* res=(NSHTTPURLResponse*) response;
     if(res.statusCode==200)
     {
-        NSLog(@"connect successfully!");
+     //   NSLog(@"connect successfully!");
         [_data setLength:0];
     }
     else

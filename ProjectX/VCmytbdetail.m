@@ -10,14 +10,16 @@
 
 @implementation VCmytbdetail
 {
-    NSString *userid,*roleid,*username1,*username2,*pbdate1,*pbdate2,*adjustxh,*jlztname,*jlzt,*czrq,*czyname,*isok;
+    NSString *userid,*roleid,*username1,*username2,*pbdate1,*pbdate2,*adjustxh,*jlztname,*jlzt,*czrq,*czyname,*isok,*tempadjust,*tempadjust2;
     UIButton *checkbox;
     NSMutableArray *mArray;
     int isfirst;
+    NSString* mywhichone;//which menu
 }
 @synthesize currentElement;
 -(void)viewDidAppear:(BOOL)animated
 {
+    
     isfirst=0;
     NSUserDefaults *roleid2=[NSUserDefaults standardUserDefaults];
     roleid=[roleid2 objectForKey:@"roleid"];
@@ -228,12 +230,74 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    
     isok=[[NSString alloc]init];
-    if(buttonIndex==0)
-    {
-        NSLog(@"%i",buttonIndex);
-    [self justdoit];
+    switch ([alertView tag]) {
+        case 1:
+        {
+            if(buttonIndex==0)
+            {
+                    //  NSLog(@"%i,%i",buttonIndex,[alertView tag]);
+                [self justdoit];
+            }
+        }
+            break;
+            
+        case 2:
+        {
+            if(buttonIndex==1)
+            {
+                               //       NSLog(@"%i,%i",buttonIndex,[alertView tag]);
+                mArray=[[NSMutableArray alloc]init];
+                [self justdoit2:@"6" mybtn:tempadjust];
+            }
+        }
+            break;
+        case 3:
+        {
+            if(buttonIndex==1)
+            {
+                //       NSLog(@"%i,%i",buttonIndex,[alertView tag]);
+                mArray=[[NSMutableArray alloc]init];
+                [self justdoit2:@"2" mybtn:tempadjust];
+            }
+        }
+            break;
+        case 4:
+        {
+            if(buttonIndex==1)
+            {
+                //       NSLog(@"%i,%i",buttonIndex,[alertView tag]);
+                mArray=[[NSMutableArray alloc]init];
+                [self justdoit2:@"4" mybtn:tempadjust];
+            }
+        }
+            break;
+        case 5:
+        {
+            if(buttonIndex==1)
+            {
+                //       NSLog(@"%i,%i",buttonIndex,[alertView tag]);
+                mArray=[[NSMutableArray alloc]init];
+                [self justdoit2:@"3" mybtn:tempadjust];
+            }
+        }
+            break;
+        case 6:
+        {
+            if(buttonIndex==1)
+            {
+                //       NSLog(@"%i,%i",buttonIndex,[alertView tag]);
+                mArray=[[NSMutableArray alloc]init];
+                [self justdoit2:@"5" mybtn:tempadjust];
+            }
+        }
+            break;
+        default:
+            break;
+            
     }
+
 }
 -(void)updatecell
 {
@@ -241,15 +305,13 @@
     {
         NSString *logintips=[NSString stringWithFormat:@"操作成功"];
         UIAlertView* alert1 = [[UIAlertView alloc]initWithTitle:@"提示" message:logintips delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+        [alert1 setTag:1];  //tips
         [alert1 show];
     }
     else
     {
 
-    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
-                [_tableView beginUpdates];
-    [_tableView deleteRowsAtIndexPaths:indexPath withRowAnimation:UITableViewRowAnimationNone];
-        [_tableView endUpdates];
+        [_tableView reloadData];
     }
 }
 -(void)updateUI
@@ -291,7 +353,7 @@
     
 
     NSString* cellStr=@"cell";
-    NSLog(@"marray is %i",[mArray count]);
+   // NSLog(@"marray is %i",[mArray count]);
     if([mArray count]==0)
     {
         UITableViewCell* cell=[_tableView dequeueReusableCellWithIdentifier:cellStr];
@@ -316,19 +378,51 @@
     tbdetailinfo *dutyinfo=[[tbdetailinfo alloc]init];
     
     dutyinfo=[mArray objectAtIndex:indexPath.row];
-        NSLog(@"%i,%i",indexPath.section, indexPath.row);
-    [cell settbr:[NSString stringWithFormat:@"调班人:%@(%@)",dutyinfo.username1,dutyinfo.pbdate1] setbtbr:[NSString stringWithFormat:@"被调班人:%@(%@)",dutyinfo.username2,dutyinfo.pbdate2] setstatus:[NSString stringWithFormat:@"状态:%@(%@ %@)",dutyinfo.jlztname,dutyinfo.czyname,dutyinfo.czrq] setjlzt:[dutyinfo.jlzt intValue] setadjustxh:[NSString stringWithFormat:@"%@",dutyinfo.adjustxh] setczyh:[NSString stringWithFormat:@"%@",userid] setadjuststatus:[NSString stringWithFormat:@"%@",dutyinfo.jlzt] setroleid:[NSString stringWithFormat:@"%@",roleid]];
-    NSLog(@"%@",dutyinfo.jlztname);
-    switch ([dutyinfo.jlzt intValue]) {
+    //    NSLog(@"%i,%i",indexPath.section, indexPath.row);
+        [cell settbr:[NSString stringWithFormat:@"调班人:%@(%@)",dutyinfo.username1,dutyinfo.pbdate1] setbtbr:[NSString stringWithFormat:@"被调班人:%@(%@)",dutyinfo.username2,dutyinfo.pbdate2] setstatus:[NSString stringWithFormat:@"状态:%@(%@ %@)",dutyinfo.jlztname,dutyinfo.czyname,dutyinfo.czrq] setjlzt:[dutyinfo.jlzt intValue] setadjustxh:[NSString stringWithFormat:@"%@",dutyinfo.adjustxh] setczyh:[NSString stringWithFormat:@"%@",userid] setadjuststatus:[NSString stringWithFormat:@"%@",dutyinfo.jlzt] setroleid:[NSString stringWithFormat:@"%@",roleid] setwhichone:[NSString stringWithFormat:@"%@",self.whichone]];
+        int i=[dutyinfo.jlzt intValue];
+   // NSLog(@"%@",dutyinfo.jlztname);
+        // according to jlzt to decide button.
+    switch ([self.whichone intValue]) {
         case 1:
         {
+            if(i==1)
+            {
               UIButton* mybtn1=[cell getbtn1];
             mybtn1.tag=[dutyinfo.adjustxh intValue];
            // NSLog(@"adjustxh is %@,%i",dutyinfo.adjustxh,mybtn1.tag);
             [mybtn1 addTarget:self action:@selector(zuofei:) forControlEvents:UIControlEventTouchUpInside];
+            }
         }
             break;
-            
+        case 2:
+        {
+            if(i==1)
+            {
+            UIButton* mybtn1=[cell getbtn1];
+            UIButton* mybtn2=[cell getbtn2];
+            mybtn1.tag=[dutyinfo.adjustxh intValue];
+            mybtn2.tag=[dutyinfo.adjustxh intValue];
+            // NSLog(@"adjustxh is %@,%i",dutyinfo.adjustxh,mybtn1.tag);
+            [mybtn1 addTarget:self action:@selector(agree:) forControlEvents:UIControlEventTouchUpInside];
+            [mybtn2 addTarget:self action:@selector(deny:) forControlEvents:UIControlEventTouchUpInside];
+            }
+        }
+            break;
+        case 3:
+        {
+            if(i==2)
+            {
+                UIButton* mybtn1=[cell getbtn1];
+                UIButton* mybtn2=[cell getbtn2];
+                mybtn1.tag=[dutyinfo.adjustxh intValue];
+                mybtn2.tag=[dutyinfo.adjustxh intValue];
+                // NSLog(@"adjustxh is %@,%i",dutyinfo.adjustxh,mybtn1.tag);
+                [mybtn1 addTarget:self action:@selector(agreexb:) forControlEvents:UIControlEventTouchUpInside];
+                [mybtn2 addTarget:self action:@selector(denyxb:) forControlEvents:UIControlEventTouchUpInside];
+            }
+        }
+            break;
         default:
             break;
     }
@@ -338,6 +432,7 @@
     }
     
 }
+
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -388,8 +483,61 @@
 }
 -(void)zuofei:(UIButton*)mybtn1
 {
-    NSString* tempstr=[NSString stringWithFormat:@"%i",mybtn1.tag];
-    [self justdoit2:@"6" mybtn:tempstr];
+        tempadjust=[NSString stringWithFormat:@"%i",mybtn1.tag];
+    NSString *logintips=[NSString stringWithFormat:@"确认提交吗?"];
+    
+    UIAlertView* alert1 = [[UIAlertView alloc]initWithTitle:@"提示" message:logintips delegate:self cancelButtonTitle:@"返回" otherButtonTitles:@"确认提交" ,nil];
+    [alert1 setTag:2];    //zuofei
+    [alert1 show];
+    
+
+}
+
+-(void)agree:(UIButton*)mybtn1
+{
+    tempadjust=[NSString stringWithFormat:@"%i",mybtn1.tag];
+    NSString *logintips=[NSString stringWithFormat:@"确认提交吗?"];
+    
+    UIAlertView* alert1 = [[UIAlertView alloc]initWithTitle:@"提示" message:logintips delegate:self cancelButtonTitle:@"返回" otherButtonTitles:@"确认提交" ,nil];
+    [alert1 setTag:3];   //agree
+    [alert1 show];
+    
+    
+}
+-(void)agreexb:(UIButton*)mybtn1
+{
+    tempadjust=[NSString stringWithFormat:@"%i",mybtn1.tag];
+    NSString *logintips=[NSString stringWithFormat:@"确认提交吗?"];
+    
+    UIAlertView* alert1 = [[UIAlertView alloc]initWithTitle:@"提示" message:logintips delegate:self cancelButtonTitle:@"返回" otherButtonTitles:@"确认提交" ,nil];
+    [alert1 setTag:5];   //agreexb
+    [alert1 show];
+    
+    
+}
+
+-(void)deny:(UIButton*)mybtn2
+{
+    tempadjust=[NSString stringWithFormat:@"%i",mybtn2.tag];
+    NSString *logintips=[NSString stringWithFormat:@"确认提交吗?"];
+    
+    UIAlertView* alert1 = [[UIAlertView alloc]initWithTitle:@"提示" message:logintips delegate:self cancelButtonTitle:@"返回" otherButtonTitles:@"确认提交" ,nil];
+    [alert1 setTag:4];   //deny
+    [alert1 show];
+    
+    
+}
+
+-(void)denyxb:(UIButton*)mybtn2
+{
+    tempadjust=[NSString stringWithFormat:@"%i",mybtn2.tag];
+    NSString *logintips=[NSString stringWithFormat:@"确认提交吗?"];
+    
+    UIAlertView* alert1 = [[UIAlertView alloc]initWithTitle:@"提示" message:logintips delegate:self cancelButtonTitle:@"返回" otherButtonTitles:@"确认提交" ,nil];
+    [alert1 setTag:6];   //denyxb
+    [alert1 show];
+    
+    
 }
 
 -(void)justdoit2:(NSString*)whichone mybtn:(NSString*)myadjustxh2
@@ -473,7 +621,7 @@
 {
     //   NSLog(@"backbutton clicked.");
     //[self.navigationController popViewControllerAnimated:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 @end
 

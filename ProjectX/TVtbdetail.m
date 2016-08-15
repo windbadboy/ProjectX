@@ -16,6 +16,10 @@
 {
     return _btn1;
 }
+-(UIButton*)getbtn2
+{
+    return _btn2;
+}
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -69,7 +73,7 @@
     }
     return self;
 }
--(void)settbr:(NSString *)text1 setbtbr:(NSString *)text2 setstatus:(NSString *)text3 setjlzt:(int)jlzt setadjustxh:(NSString *)myadjustxh setczyh:(NSString *)myczyh setadjuststatus:(NSString *)myadjuststatus setroleid:(NSString *)myroleid
+-(void)settbr:(NSString *)text1 setbtbr:(NSString *)text2 setstatus:(NSString *)text3 setjlzt:(int)jlzt setadjustxh:(NSString *)myadjustxh setczyh:(NSString *)myczyh setadjuststatus:(NSString *)myadjuststatus setroleid:(NSString *)myroleid setwhichone:(NSString *)whichone
 {
     _lbltbr.text=text1;
     _lblbtbr.text=text2;
@@ -78,29 +82,84 @@
     czyh=myczyh;
     adjuststatus=myadjuststatus;
     roleid=myroleid;
-
+    _lblstatus.font=[UIFont systemFontOfSize:14];
     
-    switch (jlzt) {
+    switch ([whichone intValue]) {
         case 1:
         {
-            
+            if(jlzt==1)
+            {
             
             [_btn1 setTitle:@"作废" forState:UIControlStateNormal];
             _btn2.hidden=YES;
             _btn1.hidden=NO;
-            _lblstatus.textColor=[UIColor orangeColor];
-          //  _btn1.tag=1;
-           // [_btn1 addTarget:self action:@selector(zuofei) forControlEvents:UIControlEventTouchUpInside];
+            }
+            else
+            {
+                _btn2.hidden=YES;
+                _btn1.hidden=YES;
+            }
+            if(jlzt==3)
+            {
+                _lblstatus.textColor=[UIColor greenColor];
+            }
+            else
+            {
+                _lblstatus.textColor=[UIColor orangeColor];
+            }
         }
             break;
-        case 6:
+        case 2:
         {
-            _btn1.hidden=YES;
-            _btn2.hidden=YES;
-            _lblstatus.textColor=[UIColor orangeColor];
-              //          _btn1.tag=1;
+            if(jlzt==1)
+            {
+            _btn1.hidden=NO;
+            _btn2.hidden=NO;
+            [_btn1 setTitle:@"同意" forState:UIControlStateNormal];
+            [_btn2 setTitle:@"拒绝" forState:UIControlStateNormal];
+            }
+            else
+            {
+                _btn2.hidden=YES;
+                _btn1.hidden=YES;
+            }
+            if(jlzt==3)
+            {
+                _lblstatus.textColor=[UIColor greenColor];
+            }
+            else
+            {
+                _lblstatus.textColor=[UIColor orangeColor];
+            }
+            //          _btn1.tag=1;
         }
             break;
+        case 3:
+        {
+            if(jlzt==2)
+            {
+                _btn1.hidden=NO;
+                _btn2.hidden=NO;
+                [_btn1 setTitle:@"同意" forState:UIControlStateNormal];
+                [_btn2 setTitle:@"拒绝" forState:UIControlStateNormal];
+            }
+            else
+            {
+                _btn2.hidden=YES;
+                _btn1.hidden=YES;
+            }
+            if(jlzt==3)
+            {
+            _lblstatus.textColor=[UIColor greenColor];
+            }
+            else
+            {
+            _lblstatus.textColor=[UIColor orangeColor];
+            }
+            //          _btn1.tag=1;
+        }
+            break;
+
         default:
             break;
     }

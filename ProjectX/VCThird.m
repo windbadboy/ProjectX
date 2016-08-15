@@ -99,7 +99,7 @@ NSString *isadmin;
     [self.view addSubview:_tableView];
     
 
-    if(isadmin==@"1")
+    if([isadmin isEqualToString:@"1"])
     {
             int i=[tbinfo1 intValue]+[tbinfo2 intValue]+[tbinfo3 intValue];
     if(i>0)
@@ -153,7 +153,14 @@ NSString *isadmin;
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     //返回组数,最终行数:组数*行数
+    if([isadmin intValue]==1)
+    {
     return 4;
+    }
+    else
+    {
+        return 3;
+    }
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -168,7 +175,7 @@ NSString *isadmin;
 
     
     
-
+//set cells title
     switch (indexPath.section) {
         case 0:
         {
@@ -265,7 +272,22 @@ NSString *isadmin;
             
         }
             break;
+        case 2:
+        {
+            VCmytbdetail* mytbDetail=[[VCmytbdetail alloc]init];
+            mytbDetail.whichone=@"2";
+            [self presentViewController:mytbDetail animated:NO completion:nil];
             
+        }
+            break;
+        case 3:
+        {
+            VCmytbdetail* mytbDetail=[[VCmytbdetail alloc]init];
+            mytbDetail.whichone=@"3";
+            [self presentViewController:mytbDetail animated:NO completion:nil];
+            
+        }
+            break;
         default:
             break;
     }

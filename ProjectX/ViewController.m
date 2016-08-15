@@ -18,6 +18,7 @@
 
 @implementation ViewController
 {
+        NSTimer *_timer;
     int isok;
     NSString *userid,*username,*roleid,*isadmin;
     UIButton *checkbox;
@@ -182,7 +183,7 @@
         vcDutyrecord.tabBarItem=tabBarItem4;
         vcNotification.tabBarItem=tabBarItem2;
         //NSLog(@"is %@",tbinfo1);
-        if(isadmin==@"1")
+        if([isadmin isEqualToString:@"1"])
         {
             int i=[tbinfo1 intValue]+[tbinfo2 intValue]+[tbinfo3 intValue];
             if(i>0)
@@ -542,6 +543,7 @@
     return theRequest;
     
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

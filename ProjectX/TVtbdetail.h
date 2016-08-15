@@ -36,7 +36,7 @@ newcelldelegate
 
 }
 //*adjustxh,*czyh,*adjuststatus,*roleid;
--(void)settbr:(NSString *)text1 setbtbr:(NSString*)text2 setstatus:(NSString*) text3 setjlzt:(int)jlzt setadjustxh:(NSString*)myadjustxh setczyh:(NSString*)myczyh setadjuststatus:(NSString*)myadjuststatus setroleid:(NSString*)myroleid;
-
+-(void)settbr:(NSString *)text1 setbtbr:(NSString*)text2 setstatus:(NSString*) text3 setjlzt:(int)jlzt setadjustxh:(NSString*)myadjustxh setczyh:(NSString*)myczyh setadjuststatus:(NSString*)myadjuststatus setroleid:(NSString*)myroleid setwhichone:(NSString*)whichone;
+-(UIButton*)getbtn2;
 @property(assign,nonatomic)id<newcelldelegate> mydelegate;
 @end

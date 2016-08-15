@@ -731,7 +731,8 @@
     }
     else if(x==2)
     {
-        lblzyrs.text=[NSString stringWithFormat:@"住院人数:%@",zyrs];
+        lblzyrs.font=[UIFont systemFontOfSize:13];
+        lblzyrs.text=[NSString stringWithFormat:@"住院人数:%@ 床占率:%.2f%%",zyrs,[zyrs floatValue]/509*100];
     }
    
 }
