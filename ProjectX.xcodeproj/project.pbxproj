@@ -58,6 +58,11 @@
 		9FB329FF1D3E7CFD005DE587 /* noteinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB329FE1D3E7CFD005DE587 /* noteinfo.m */; };
 		9FBF487A1D4D98BA00863B86 /* VCDutyrecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBF48791D4D98BA00863B86 /* VCDutyrecord.m */; };
 		9FBF487D1D4DC22E00863B86 /* Changepw.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBF487C1D4DC22E00863B86 /* Changepw.m */; };
+		9FC6002B1D61E5360001FF43 /* dutyquery.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FC600291D61E5360001FF43 /* dutyquery.png */; };
+		9FC6002C1D61E5360001FF43 /* writelog.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FC6002A1D61E5360001FF43 /* writelog.png */; };
+		9FC6002F1D61EB420001FF43 /* VCdutylogquery.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC6002E1D61EB420001FF43 /* VCdutylogquery.m */; };
+		9FC600321D61F0660001FF43 /* dutyloginfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC600311D61F0660001FF43 /* dutyloginfo.m */; };
+		9FC600351D61F6670001FF43 /* TVdutylogcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC600341D61F6670001FF43 /* TVdutylogcell.m */; };
 		9FD4244D1D603052009BC052 /* VCmytbdetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4244C1D603052009BC052 /* VCmytbdetail.m */; };
 		9FD424501D6036B7009BC052 /* tbdetailinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD4244F1D6036B7009BC052 /* tbdetailinfo.m */; };
 		9FD424531D603B8B009BC052 /* TVtbdetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD424521D603B8B009BC052 /* TVtbdetail.m */; };
@@ -164,6 +169,14 @@
 		9FBF48791D4D98BA00863B86 /* VCDutyrecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDutyrecord.m; sourceTree = "<group>"; };
 		9FBF487B1D4DC22E00863B86 /* Changepw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Changepw.h; sourceTree = "<group>"; };
 		9FBF487C1D4DC22E00863B86 /* Changepw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Changepw.m; sourceTree = "<group>"; };
+		9FC600291D61E5360001FF43 /* dutyquery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dutyquery.png; sourceTree = "<group>"; };
+		9FC6002A1D61E5360001FF43 /* writelog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = writelog.png; sourceTree = "<group>"; };
+		9FC6002D1D61EB420001FF43 /* VCdutylogquery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCdutylogquery.h; sourceTree = "<group>"; };
+		9FC6002E1D61EB420001FF43 /* VCdutylogquery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCdutylogquery.m; sourceTree = "<group>"; };
+		9FC600301D61F0660001FF43 /* dutyloginfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dutyloginfo.h; sourceTree = "<group>"; };
+		9FC600311D61F0660001FF43 /* dutyloginfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dutyloginfo.m; sourceTree = "<group>"; };
+		9FC600331D61F6670001FF43 /* TVdutylogcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVdutylogcell.h; sourceTree = "<group>"; };
+		9FC600341D61F6670001FF43 /* TVdutylogcell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVdutylogcell.m; sourceTree = "<group>"; };
 		9FD4244B1D603052009BC052 /* VCmytbdetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCmytbdetail.h; sourceTree = "<group>"; };
 		9FD4244C1D603052009BC052 /* VCmytbdetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCmytbdetail.m; sourceTree = "<group>"; };
 		9FD4244E1D6036B7009BC052 /* tbdetailinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tbdetailinfo.h; sourceTree = "<group>"; };
@@ -236,6 +249,8 @@
 		9F940B731D47793C001FF09D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				9FC600291D61E5360001FF43 /* dutyquery.png */,
+				9FC6002A1D61E5360001FF43 /* writelog.png */,
 				9F6DE6641D5EA204006F1CBD /* tb0.png */,
 				9F6DE6651D5EA204006F1CBD /* tb1.png */,
 				9F6DE6661D5EA204006F1CBD /* tb2.png */,
@@ -329,6 +344,8 @@
 				9FACB42D1D3B0B4E00FBBE8D /* tabitem.png */,
 				9FF7DF341D3FB04F00E978A9 /* background.png */,
 				9FF7DF361D3FB12E00E978A9 /* clock.png */,
+				9FC600301D61F0660001FF43 /* dutyloginfo.h */,
+				9FC600311D61F0660001FF43 /* dutyloginfo.m */,
 				9FF7DF371D3FB12E00E978A9 /* duty.png */,
 				9FF7DF381D3FB12E00E978A9 /* note.png */,
 				9FA0DED01D40F6EA00EFAE2D /* unfold.png */,
@@ -353,6 +370,10 @@
 				9FD4244F1D6036B7009BC052 /* tbdetailinfo.m */,
 				9FD424511D603B8B009BC052 /* TVtbdetail.h */,
 				9FD424521D603B8B009BC052 /* TVtbdetail.m */,
+				9FC6002D1D61EB420001FF43 /* VCdutylogquery.h */,
+				9FC6002E1D61EB420001FF43 /* VCdutylogquery.m */,
+				9FC600331D61F6670001FF43 /* TVdutylogcell.h */,
+				9FC600341D61F6670001FF43 /* TVdutylogcell.m */,
 			);
 			path = ProjectX;
 			sourceTree = "<group>";
@@ -441,11 +462,13 @@
 				9F72F2211D4F791100317D3B /* zbrz.png in Resources */,
 				9F940B771D4784D1001FF09D /* lczblogo.png in Resources */,
 				9F6DE6631D5E9E5E006F1CBD /* number.png in Resources */,
+				9FC6002B1D61E5360001FF43 /* dutyquery.png in Resources */,
 				9F517F001D4C62D000FFF836 /* zyrs.png in Resources */,
 				9F61255B1D37C27C0054BDF6 /* checkbox_off.png in Resources */,
 				9F6DE6681D5EA204006F1CBD /* tb0.png in Resources */,
 				9FA0DECF1D40F60E00EFAE2D /* fold.png in Resources */,
 				9FA0DED81D41111800EFAE2D /* back.png in Resources */,
+				9FC6002C1D61E5360001FF43 /* writelog.png in Resources */,
 				9FACB42E1D3B0B4E00FBBE8D /* tabitem.png in Resources */,
 				9FF7DF351D3FB04F00E978A9 /* background.png in Resources */,
 				9FE7AF6B1D254BCF000A8B93 /* Main.storyboard in Resources */,
@@ -471,6 +494,7 @@
 				9F940B7D1D479020001FF09D /* mydbutil.m in Sources */,
 				9FB329FB1D3E5638005DE587 /* FMResultSet.m in Sources */,
 				9F24CB881D438E3900852B43 /* MASViewConstraint.m in Sources */,
+				9FC600321D61F0660001FF43 /* dutyloginfo.m in Sources */,
 				9F6DE66E1D5ED9DF006F1CBD /* VCmytb.m in Sources */,
 				9F24CB8B1D438E3900852B43 /* View+MASAdditions.m in Sources */,
 				9F24CB831D438E3900852B43 /* MASCompositeConstraint.m in Sources */,
@@ -485,6 +509,8 @@
 				9F6DE6711D5F166A006F1CBD /* VCmytb_second.m in Sources */,
 				9F36DB8A1D33E40F00C67939 /* VCNotification.m in Sources */,
 				9F36DB841D33E1A200C67939 /* VCThird.m in Sources */,
+				9FC6002F1D61EB420001FF43 /* VCdutylogquery.m in Sources */,
+				9FC600351D61F6670001FF43 /* TVdutylogcell.m in Sources */,
 				9FB329F81D3E5638005DE587 /* FMDatabaseAdditions.m in Sources */,
 				9F24CB8A1D438E3900852B43 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				9FB329FF1D3E7CFD005DE587 /* noteinfo.m in Sources */,

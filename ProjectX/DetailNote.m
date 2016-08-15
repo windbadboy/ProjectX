@@ -21,8 +21,7 @@
 {
     
         mArray=[NSMutableArray arrayWithCapacity:20];
-    
-    
+
     setchecklist=1;
     
     NSLog(@"updateUI %@",[NSThread currentThread]);
@@ -234,7 +233,7 @@
         username=string;
         
         
-            NSLog(@"isok is %@",username);
+         //   NSLog(@"isok is %@",username);
     }
     if ([currentElement isEqualToString:@"checktime"]) {
         checktime=string;
@@ -262,7 +261,7 @@
 }
 -(void)parserDidEndDocument:(NSXMLParser *)parser
 {
-              NSLog(@"DidEndDoc %@",[NSThread currentThread]);
+          //    NSLog(@"DidEndDoc %@",[NSThread currentThread]);
         [self performSelectorOnMainThread:@selector(updateUI) withObject:nil waitUntilDone:NO];
     
 }

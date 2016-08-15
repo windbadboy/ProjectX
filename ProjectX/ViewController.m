@@ -603,7 +603,7 @@ tbinfo3=@"0";
     _copyright.font=[UIFont systemFontOfSize:14];
     
     _version=[[UILabel alloc]init];
-    _version.text=@"Ver 1.13 Icecream";
+    _version.text=@"Ver 1.17b Kung Pao Chicken";
     _version.font=[UIFont systemFontOfSize:14];
     
     _tfPassword=[[UITextField alloc] init];
@@ -758,7 +758,7 @@ tbinfo3=@"0";
     [_version mas_makeConstraints:^(MASConstraintMaker *make)
      {
          make.left.equalTo(self.view).offset(16);
-         make.width.equalTo(@150);
+         make.width.equalTo(@251);
          make.height.equalTo(@30);
          make.bottom.equalTo(self.view).offset(-2);
      }];
