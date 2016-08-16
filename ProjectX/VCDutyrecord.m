@@ -107,7 +107,7 @@
 
         case 1:
         {
-            VCDutylogwrite* vcdutylogWrite=[[VCDutylogwrite alloc]init];
+            VCdutylogwritequery* vcdutylogWrite=[[VCdutylogwritequery alloc]init];
             [self presentViewController:vcdutylogWrite animated:NO completion:nil];
             
             break;

@@ -13,16 +13,15 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
             self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    _data1 = [NSMutableArray arrayWithObjects: @"在岗", @"部分在岗", nil];
-    _data2 = [NSMutableArray arrayWithObjects: @"按规定着装", @"未按规定着装", nil];
-    _data3 = [NSMutableArray arrayWithObjects: @"无特殊", @"存在问题", nil];
 
+    mycount=0;
    
     return self;
 }
 - (NSInteger)numberOfColumnsInMenu:(JSDropDownMenu *)menu {
-    
-    return 2;
+
+        return 2;
+
 }
 
 -(NSInteger)currentLeftSelectedRow:(NSInteger)column{
@@ -36,6 +35,7 @@
         
         return _currentData2Index;
     }
+    
     
     return 0;
 }
@@ -99,37 +99,51 @@
 - (void)menu:(JSDropDownMenu *)menu didSelectRowAtIndexPath:(JSIndexPath *)indexPath {
     
     if (indexPath.column == 0) {
-        if(indexPath.row>0)
-        {
+
         _currentData1Index = indexPath.row;
-        }
+
         
     } else if(indexPath.column == 1){
         
-        if(indexPath.row>0)
-        {
+
             _currentData2Index = indexPath.row;
-        }
+
         
-    } else{
+    } else if(indexPath.column==2){
         
-        if(indexPath.row>0)
-        {
+
             _currentData3Index = indexPath.row;
-        }
+
     }
 }
--(void)setarray1:(NSMutableArray*)array1 setarray2:(NSMutableArray*)array2
+-(void)setarray1:(NSMutableArray*)array1 setarray2:(NSMutableArray*)array2 setsection:(NSInteger *)section setrow:(NSInteger)row
 {
+    mycount=section;
+    if(section==0||section==1)
+    {
     _data1=[[NSMutableArray alloc]initWithArray:array1];
     _data2=[[NSMutableArray alloc]initWithArray:array2];
-    JSDropDownMenu *menu = [[JSDropDownMenu alloc] initWithOrigin:CGPointMake(0, 60) andHeight:45];
-    menu.indicatorColor = [UIColor colorWithRed:175.0f/255.0f green:175.0f/255.0f blue:175.0f/255.0f alpha:1.0];
-    menu.separatorColor = [UIColor colorWithRed:210.0f/255.0f green:210.0f/255.0f blue:210.0f/255.0f alpha:1.0];
-    menu.textColor = [UIColor colorWithRed:83.f/255.0f green:83.f/255.0f blue:83.f/255.0f alpha:1.0f];
-    menu.dataSource = self;
-    menu.delegate = self;
-    [self.contentView addSubview:menu];
+        JSDropDownMenu *menu = [[JSDropDownMenu alloc] initWithOrigin:CGPointMake(0, 20) andHeight:45];
+        menu.indicatorColor = [UIColor colorWithRed:175.0f/255.0f green:175.0f/255.0f blue:175.0f/255.0f alpha:1.0];
+        menu.separatorColor = [UIColor colorWithRed:210.0f/255.0f green:210.0f/255.0f blue:210.0f/255.0f alpha:1.0];
+        menu.textColor = [UIColor colorWithRed:83.f/255.0f green:83.f/255.0f blue:83.f/255.0f alpha:1.0f];
+        menu.dataSource = self;
+        menu.delegate = self;
+        [self.contentView addSubview:menu];
+    }
+    else if(section==2)
+    {
+        UITextField *mytextview=[[UITextField alloc]init];
+        [self.contentView addSubview:mytextview];
+        [mytextview mas_remakeConstraints:^(MASConstraintMaker *make)
+         {
+             make.width.equalTo(self.contentView);
+             make.left.equalTo(self.contentView);
+             make.top.equalTo(self.contentView);
+             make.height.equalTo(self.contentView);
+         }];
+    }
+
 }
 
 @end

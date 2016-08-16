@@ -29,7 +29,7 @@
      {
          make.width.equalTo(self.view);
          make.left.equalTo(self.view);
-         make.top.equalTo(self.view).offset(30);
+         make.top.equalTo(self.view).offset(50);
          make.height.equalTo(self.view);
      }];
     checkbox=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -45,12 +45,12 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     //返回行数
-    return 2;
+    return 1;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     //返回组数,最终行数:组数*行数
-    return 1;
+    return 3;
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -60,21 +60,27 @@
     {
         cell=[[VCtestCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr];
     }
-    switch (indexPath.row) {
+    switch (indexPath.section) {
         case 0:
         {
-            _data1 = [NSMutableArray arrayWithObjects: @"在岗情况",@"在岗", @"部分在岗", nil];
-            _data2 = [NSMutableArray arrayWithObjects: @"着装",@"按规定着装", @"未按规定着装", nil];
-            [cell setarray1:_data1 setarray2:_data2];
+            _data1 = [NSMutableArray arrayWithObjects: @"在岗", @"部分在岗", nil];
+            _data2 = [NSMutableArray arrayWithObjects: @"按规定着装", @"未按规定着装", nil];
+
+            [cell setarray1:_data1 setarray2:_data2 setsection:indexPath.section setrow:indexPath.row];
         }
             break;
         case 1:
         {
-            _data1 = [NSMutableArray arrayWithObjects: @"危重处理",@"无特殊", @"存在问题", nil];
-            _data2 = [NSMutableArray arrayWithObjects: @"服务态度",@"无不良反映", @"有投诉", nil];
-            [cell setarray1:_data1 setarray2:_data2];
+            _data1 = [NSMutableArray arrayWithObjects: @"无不良反映", @"有投诉", nil];
+            _data2 = [NSMutableArray arrayWithObjects: @"无特殊", @"存在问题", nil];
+            [cell setarray1:_data1 setarray2:_data2 setsection:indexPath.section setrow:indexPath.row];
             break;
         }
+        case 3:
+        {
+             [cell setarray1:nil setarray2:nil setsection:indexPath.section setrow:indexPath.row];
+        }
+            break;
             
         default:
             break;
@@ -93,7 +99,7 @@
 //每行高度
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 120;
+    return 180;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -102,7 +108,16 @@
 
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"填写值班日志";
+    switch (section) {
+        case 0:
+            return @"             在岗情况                              着装     ";
+            break;
+        case 1:
+             return @"            服务态度                              危重处理";
+        default:
+            break;
+    }
+    return @"填写值班内容";
 }
 
 

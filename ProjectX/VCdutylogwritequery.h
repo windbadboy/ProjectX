@@ -1,23 +1,19 @@
 //
-//  VCDutyrecord.h
+//  VCdutylogwritequery.h
 //  ProjectX
 //
-//  Created by ted on 16/7/31.
+//  Created by ted on 16/8/16.
 //  Copyright © 2016年 ted. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "Masonry.h"
-#import "VCdutylogquery.h"
-#import "VCDutylogwrite.h"
-#import "VCdutylogwritequery.h"
-@interface VCDutyrecord : UIViewController
+#import "TVdutylogwriteinfo.h"
+#import "TVdutyelogwritecell.h"
+@interface VCdutylogwritequery : UITableViewController
 <
-//实现数据视图的普通协议
-//数据视图的普通事件处理
+
 UITableViewDelegate,
-//实现数据视图的数据代理协议
-//处理数据视图的数据代理
 UITableViewDataSource,
 NSURLConnectionDelegate,
 NSURLConnectionDataDelegate,

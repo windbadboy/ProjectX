@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9F0AC52B1D62B30C00376A1B /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F0AC5271D62B30C00376A1B /* ico_make.png */; };
-		9F0AC52C1D62B30C00376A1B /* JSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AC5291D62B30C00376A1B /* JSDropDownMenu.m */; };
 		9F0AC5321D62B41C00376A1B /* VCDutylogwrite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AC5311D62B41C00376A1B /* VCDutylogwrite.m */; };
 		9F0AC5351D62E9F100376A1B /* VCtestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0AC5341D62E9F100376A1B /* VCtestCell.m */; };
 		9F241C781D5E0E2C007439A2 /* TVtbcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F241C771D5E0E2C007439A2 /* TVtbcell.m */; };
@@ -31,6 +29,11 @@
 		9F517F001D4C62D000FFF836 /* zyrs.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F517EFF1D4C62D000FFF836 /* zyrs.png */; };
 		9F6125571D37C0530054BDF6 /* checkbox_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F6125561D37C0530054BDF6 /* checkbox_on.png */; };
 		9F61255B1D37C27C0054BDF6 /* checkbox_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F61255A1D37C27C0054BDF6 /* checkbox_off.png */; };
+		9F6919241D633551009377C3 /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F6919211D633551009377C3 /* ico_make.png */; };
+		9F6919251D633551009377C3 /* JSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6919231D633551009377C3 /* JSDropDownMenu.m */; };
+		9F6919281D635426009377C3 /* VCdutylogwritequery.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F6919271D635426009377C3 /* VCdutylogwritequery.m */; };
+		9F69192B1D6354D1009377C3 /* TVdutyelogwritecell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F69192A1D6354D1009377C3 /* TVdutyelogwritecell.m */; };
+		9F69192E1D635888009377C3 /* TVdutylogwriteinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F69192D1D635888009377C3 /* TVdutylogwriteinfo.m */; };
 		9F6DE6631D5E9E5E006F1CBD /* number.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F6DE6621D5E9E5E006F1CBD /* number.png */; };
 		9F6DE6681D5EA204006F1CBD /* tb0.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F6DE6641D5EA204006F1CBD /* tb0.png */; };
 		9F6DE6691D5EA204006F1CBD /* tb1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F6DE6651D5EA204006F1CBD /* tb1.png */; };
@@ -84,9 +87,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9F0AC5271D62B30C00376A1B /* ico_make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_make.png; sourceTree = "<group>"; };
-		9F0AC5281D62B30C00376A1B /* JSDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDropDownMenu.h; sourceTree = "<group>"; };
-		9F0AC5291D62B30C00376A1B /* JSDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDropDownMenu.m; sourceTree = "<group>"; };
 		9F0AC5301D62B41C00376A1B /* VCDutylogwrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDutylogwrite.h; sourceTree = "<group>"; };
 		9F0AC5311D62B41C00376A1B /* VCDutylogwrite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDutylogwrite.m; sourceTree = "<group>"; };
 		9F0AC5331D62E9F100376A1B /* VCtestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCtestCell.h; sourceTree = "<group>"; };
@@ -133,6 +133,15 @@
 		9F517EFF1D4C62D000FFF836 /* zyrs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zyrs.png; sourceTree = "<group>"; };
 		9F6125561D37C0530054BDF6 /* checkbox_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_on.png; sourceTree = "<group>"; };
 		9F61255A1D37C27C0054BDF6 /* checkbox_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_off.png; sourceTree = "<group>"; };
+		9F6919211D633551009377C3 /* ico_make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_make.png; sourceTree = "<group>"; };
+		9F6919221D633551009377C3 /* JSDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDropDownMenu.h; sourceTree = "<group>"; };
+		9F6919231D633551009377C3 /* JSDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDropDownMenu.m; sourceTree = "<group>"; };
+		9F6919261D635426009377C3 /* VCdutylogwritequery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCdutylogwritequery.h; sourceTree = "<group>"; };
+		9F6919271D635426009377C3 /* VCdutylogwritequery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCdutylogwritequery.m; sourceTree = "<group>"; };
+		9F6919291D6354D1009377C3 /* TVdutyelogwritecell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVdutyelogwritecell.h; sourceTree = "<group>"; };
+		9F69192A1D6354D1009377C3 /* TVdutyelogwritecell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVdutyelogwritecell.m; sourceTree = "<group>"; };
+		9F69192C1D635888009377C3 /* TVdutylogwriteinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVdutylogwriteinfo.h; sourceTree = "<group>"; };
+		9F69192D1D635888009377C3 /* TVdutylogwriteinfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVdutylogwriteinfo.m; sourceTree = "<group>"; };
 		9F6DE6621D5E9E5E006F1CBD /* number.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = number.png; sourceTree = "<group>"; };
 		9F6DE6641D5EA204006F1CBD /* tb0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tb0.png; sourceTree = "<group>"; };
 		9F6DE6651D5EA204006F1CBD /* tb1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tb1.png; sourceTree = "<group>"; };
@@ -224,17 +233,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9F0AC52A1D62B30C00376A1B /* JSDropDownMenu */ = {
-			isa = PBXGroup;
-			children = (
-				9F0AC5271D62B30C00376A1B /* ico_make.png */,
-				9F0AC5281D62B30C00376A1B /* JSDropDownMenu.h */,
-				9F0AC5291D62B30C00376A1B /* JSDropDownMenu.m */,
-			);
-			name = JSDropDownMenu;
-			path = "/Users/ted/Downloads/JSDropDownMenu-master/JSDropDownMenuDemo/JSDropDownMenuDemo/../../JSDropDownMenu";
-			sourceTree = "<absolute>";
-		};
 		9F24CB671D438E3900852B43 /* Masonry */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +264,16 @@
 				9F24CB811D438E3900852B43 /* ViewController+MASAdditions.m */,
 			);
 			path = Masonry;
+			sourceTree = "<group>";
+		};
+		9F6919201D633551009377C3 /* JSDropDownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				9F6919211D633551009377C3 /* ico_make.png */,
+				9F6919221D633551009377C3 /* JSDropDownMenu.h */,
+				9F6919231D633551009377C3 /* JSDropDownMenu.m */,
+			);
+			path = JSDropDownMenu;
 			sourceTree = "<group>";
 		};
 		9F940B731D47793C001FF09D /* images */ = {
@@ -309,7 +317,7 @@
 		9FE7AF541D254BCF000A8B93 = {
 			isa = PBXGroup;
 			children = (
-				9F0AC52A1D62B30C00376A1B /* JSDropDownMenu */,
+				9F6919201D633551009377C3 /* JSDropDownMenu */,
 				9FB329EA1D3E5638005DE587 /* fmdb */,
 				9F940B731D47793C001FF09D /* images */,
 				9FB329E81D3E5510005DE587 /* libsqlite3.tbd */,
@@ -389,18 +397,24 @@
 				9F6DE6731D5F409E006F1CBD /* VCmytb_final.m */,
 				9FD4244B1D603052009BC052 /* VCmytbdetail.h */,
 				9FD4244C1D603052009BC052 /* VCmytbdetail.m */,
+				9F69192C1D635888009377C3 /* TVdutylogwriteinfo.h */,
+				9F69192D1D635888009377C3 /* TVdutylogwriteinfo.m */,
 				9FD4244E1D6036B7009BC052 /* tbdetailinfo.h */,
 				9FD4244F1D6036B7009BC052 /* tbdetailinfo.m */,
 				9FD424511D603B8B009BC052 /* TVtbdetail.h */,
 				9FD424521D603B8B009BC052 /* TVtbdetail.m */,
 				9FC6002D1D61EB420001FF43 /* VCdutylogquery.h */,
 				9FC6002E1D61EB420001FF43 /* VCdutylogquery.m */,
+				9F6919261D635426009377C3 /* VCdutylogwritequery.h */,
+				9F6919271D635426009377C3 /* VCdutylogwritequery.m */,
 				9FC600331D61F6670001FF43 /* TVdutylogcell.h */,
 				9FC600341D61F6670001FF43 /* TVdutylogcell.m */,
 				9F0AC5301D62B41C00376A1B /* VCDutylogwrite.h */,
 				9F0AC5311D62B41C00376A1B /* VCDutylogwrite.m */,
 				9F0AC5331D62E9F100376A1B /* VCtestCell.h */,
 				9F0AC5341D62E9F100376A1B /* VCtestCell.m */,
+				9F6919291D6354D1009377C3 /* TVdutyelogwritecell.h */,
+				9F69192A1D6354D1009377C3 /* TVdutyelogwritecell.m */,
 			);
 			path = ProjectX;
 			sourceTree = "<group>";
@@ -480,7 +494,7 @@
 				9FE7AF701D254BCF000A8B93 /* LaunchScreen.storyboard in Resources */,
 				9F6DE66A1D5EA204006F1CBD /* tb2.png in Resources */,
 				9FF7DF3B1D3FB12E00E978A9 /* note.png in Resources */,
-				9F0AC52B1D62B30C00376A1B /* ico_make.png in Resources */,
+				9F6919241D633551009377C3 /* ico_make.png in Resources */,
 				9FA0DED31D40FBC300EFAE2D /* xzzb.png in Resources */,
 				9F6125571D37C0530054BDF6 /* checkbox_on.png in Resources */,
 				9F6DE6691D5EA204006F1CBD /* tb1.png in Resources */,
@@ -514,9 +528,9 @@
 				9F24CB871D438E3900852B43 /* MASViewAttribute.m in Sources */,
 				9F24CB851D438E3900852B43 /* MASConstraintMaker.m in Sources */,
 				9F4C6E401D40554B00F95924 /* DetailNote.m in Sources */,
-				9F0AC52C1D62B30C00376A1B /* JSDropDownMenu.m in Sources */,
 				9FBF487D1D4DC22E00863B86 /* Changepw.m in Sources */,
 				9F241C781D5E0E2C007439A2 /* TVtbcell.m in Sources */,
+				9F6919251D633551009377C3 /* JSDropDownMenu.m in Sources */,
 				9FD424501D6036B7009BC052 /* tbdetailinfo.m in Sources */,
 				9FF700611D3B651800F48E2F /* mydutyinfo.m in Sources */,
 				9F0AC5321D62B41C00376A1B /* VCDutylogwrite.m in Sources */,
@@ -527,12 +541,14 @@
 				9FC600321D61F0660001FF43 /* dutyloginfo.m in Sources */,
 				9F6DE66E1D5ED9DF006F1CBD /* VCmytb.m in Sources */,
 				9F24CB8B1D438E3900852B43 /* View+MASAdditions.m in Sources */,
+				9F6919281D635426009377C3 /* VCdutylogwritequery.m in Sources */,
 				9F24CB831D438E3900852B43 /* MASCompositeConstraint.m in Sources */,
 				9FE7AF681D254BCF000A8B93 /* ViewController.m in Sources */,
 				9F29990B1D325AD500211EE8 /* MainFrame.m in Sources */,
 				9FB329FA1D3E5638005DE587 /* FMDatabaseQueue.m in Sources */,
 				9FD4244D1D603052009BC052 /* VCmytbdetail.m in Sources */,
 				9F6DE6741D5F409E006F1CBD /* VCmytb_final.m in Sources */,
+				9F69192B1D6354D1009377C3 /* TVdutyelogwritecell.m in Sources */,
 				9F24CB861D438E3900852B43 /* MASLayoutConstraint.m in Sources */,
 				9FB329F71D3E5638005DE587 /* FMDatabase.m in Sources */,
 				9F36DB811D33E19100C67939 /* VCSecond.m in Sources */,
@@ -545,6 +561,7 @@
 				9FB329F81D3E5638005DE587 /* FMDatabaseAdditions.m in Sources */,
 				9F24CB8A1D438E3900852B43 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				9FB329FF1D3E7CFD005DE587 /* noteinfo.m in Sources */,
+				9F69192E1D635888009377C3 /* TVdutylogwriteinfo.m in Sources */,
 				9FE7AF651D254BCF000A8B93 /* AppDelegate.m in Sources */,
 				9F24CB891D438E3900852B43 /* NSArray+MASAdditions.m in Sources */,
 				9F24CB8C1D438E3900852B43 /* ViewController+MASAdditions.m in Sources */,

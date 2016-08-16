@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JSDropDownMenu.h"
+#import "Masonry.h"
 @interface VCtestCell : UITableViewCell
 <
 JSDropDownMenuDataSource,
@@ -23,6 +24,7 @@ JSDropDownMenuDelegate
     NSInteger _currentData1Index;
     NSInteger _currentData2Index;
     NSInteger _currentData3Index;
+    NSInteger mycount;
 }
--(void)setarray1:(NSMutableArray*)array1 setarray2:(NSMutableArray*)array2;
+-(void)setarray1:(NSMutableArray*)array1 setarray2:(NSMutableArray*)array2 setsection:(NSInteger*)section setrow:(NSInteger)row;
 @end

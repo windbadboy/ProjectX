@@ -24,7 +24,7 @@ UIAlertViewDelegate
 
 {
     
-    NSMutableArray *_data1;
+    NSArray *_data1;
     NSMutableArray *_data2;
     NSMutableArray *_data3;
     
