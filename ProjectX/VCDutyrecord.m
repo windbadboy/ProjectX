@@ -55,6 +55,8 @@
     //返回组数,最终行数:组数*行数
     return 1;
 }
+
+
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString* cellStr=@"cell";
@@ -95,16 +97,20 @@
 //tabview click event
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.section) {
+    switch (indexPath.row) {
         case 0:
         {
             VCdutylogquery* vcMytb=[[VCdutylogquery alloc]init];
             [self presentViewController:vcMytb animated:NO completion:nil];
+                        break;
         }
-            break;
+
         case 1:
         {
-
+            VCDutylogwrite* vcdutylogWrite=[[VCDutylogwrite alloc]init];
+            [self presentViewController:vcdutylogWrite animated:NO completion:nil];
+            
+            break;
         }
 
         default:

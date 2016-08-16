@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Masonry.h"
 #import "VCdutylogquery.h"
+#import "VCDutylogwrite.h"
 @interface VCDutyrecord : UIViewController
 <
 //实现数据视图的普通协议
