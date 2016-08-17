@@ -295,6 +295,7 @@
 
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+//NSLog(@"query %i",section);
  return @"查询值班日志";
 }
 

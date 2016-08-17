@@ -24,14 +24,6 @@
     NSUserDefaults *userid2=[NSUserDefaults standardUserDefaults];
     userid=[userid2 objectForKey:@"userID"];
     self.view.backgroundColor=[UIColor whiteColor];
-    checkbox=[UIButton buttonWithType:UIButtonTypeCustom];
-    CGRect checkboxRect = CGRectMake(10, 30, 30, 20);
-    // checkbox.frame=CGRectMake(10, 30, 30, 20);
-    [checkbox setFrame:checkboxRect];
-    [checkbox setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [checkbox setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateSelected];
-    [checkbox addTarget:self action:@selector(checkboxClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:checkbox];
     mArray=[[NSMutableArray alloc]init];
     [self justdoit];
 }
@@ -173,7 +165,7 @@
         if(dutyinfo.username.length>0)
         {
             [mArray addObject:dutyinfo];
-          //  NSLog(@"%@",dutyinfo.pbdate);
+           // NSLog(@"%@",dutyinfo.pbdate);
         }
         
         
@@ -188,7 +180,15 @@
 -(void)updateUI
 {
     
-   // NSLog(@"hey");
+
+    checkbox=[UIButton buttonWithType:UIButtonTypeCustom];
+    CGRect checkboxRect = CGRectMake(10, 30, 30, 20);
+    // checkbox.frame=CGRectMake(10, 30, 30, 20);
+    [checkbox setFrame:checkboxRect];
+    [checkbox setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    [checkbox setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateSelected];
+    [checkbox addTarget:self action:@selector(checkboxClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:checkbox];
     _tableView=[[UITableView alloc] init];
     _tableView.delegate=self;
     _tableView.dataSource=self;
@@ -201,6 +201,8 @@
          make.height.equalTo(self.view);
      }];
 }
+
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     //返回行数
@@ -222,36 +224,54 @@
     
     TVdutylogwriteinfo *dutyinfo=[[TVdutylogwriteinfo alloc]init];
     dutyinfo=[mArray objectAtIndex:indexPath.row];
- //   NSLog(@"%@",dutyinfo.pbdate);
+    //   NSLog(@"%@",dutyinfo.pbdate);
     [cell setusername:dutyinfo.username setpbdate:dutyinfo.pbdate setweekday:dutyinfo.myweekday setisrecord:dutyinfo.isrecord setrolename:dutyinfo.rolename];
-
+    
     
     return cell;
     
 }
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+//    dutyinfo.username=username;
+//    dutyinfo.roleid=roleid;
+//    dutyinfo.userid=userid;
+//    dutyinfo.rolename=rolename;
+//    dutyinfo.myweekday=myweekday;
+//    dutyinfo.isrecord=isrecord;
+//    dutyinfo.pbdate=pbdate;
+    TVdutylogwriteinfo *dutyinfo=[[TVdutylogwriteinfo alloc]init];
+    dutyinfo=[mArray objectAtIndex:indexPath.row];
+    VCDutylogwrite *mydutylogwrite=[[VCDutylogwrite alloc]init];
+    mydutylogwrite.pbdate=dutyinfo.pbdate;
+    mydutylogwrite.isrecord=dutyinfo.isrecord;
+    mydutylogwrite.userid=dutyinfo.userid;
+    mydutylogwrite.roleid=dutyinfo.roleid;
+    mydutylogwrite.myweekday=dutyinfo.myweekday;
+    mydutylogwrite.username=dutyinfo.username;
+    mydutylogwrite.rolename=dutyinfo.rolename;
+    [self presentViewController:mydutylogwrite animated:NO completion:nil];
     
     
 }
 //每行高度
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-        return 80;
-
+    
+    return 80;
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 80;
+    return 40;
 }
 
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSLog(@"%i",section);
-    return @"选择日期";
+
+    return @"选择填写日期";
 }
+
 
 -(void)checkboxClick
 {

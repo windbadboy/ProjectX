@@ -15,6 +15,8 @@
             self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
 
     mycount=0;
+    _dataindex1=0;
+    _dataindex2=0;
    
     return self;
 }
@@ -58,9 +60,10 @@
 - (NSString *)menu:(JSDropDownMenu *)menu titleForColumn:(NSInteger)column{
     
     switch (column) {
-        case 0: return _data1[0];
+
+        case 0: return _data1[_dataindex1];
             break;
-        case 1: return _data2[0];
+        case 1: return _data2[_dataindex2];
             break;
         case 2: return _data3[0];
             break;
@@ -116,13 +119,17 @@
 
     }
 }
--(void)setarray1:(NSMutableArray*)array1 setarray2:(NSMutableArray*)array2 setsection:(NSInteger *)section setrow:(NSInteger)row
+-(void)setarray1:(NSMutableArray*)array1 setarray2:(NSMutableArray*)array2 setsection:(NSInteger *)section setrow:(NSInteger)row setdataindex1:(NSInteger *)dataindex1 setdataindex2:(NSInteger *)dataindex2
 {
     mycount=section;
+    _dataindex1=dataindex1-1;
+    _dataindex2=dataindex2-1;
+                NSLog(@"%i,%i",_dataindex1,_dataindex2);
     if(section==0||section==1)
     {
     _data1=[[NSMutableArray alloc]initWithArray:array1];
     _data2=[[NSMutableArray alloc]initWithArray:array2];
+        
         JSDropDownMenu *menu = [[JSDropDownMenu alloc] initWithOrigin:CGPointMake(0, 20) andHeight:45];
         menu.indicatorColor = [UIColor colorWithRed:175.0f/255.0f green:175.0f/255.0f blue:175.0f/255.0f alpha:1.0];
         menu.separatorColor = [UIColor colorWithRed:210.0f/255.0f green:210.0f/255.0f blue:210.0f/255.0f alpha:1.0];
@@ -130,10 +137,12 @@
         menu.dataSource = self;
         menu.delegate = self;
         [self.contentView addSubview:menu];
+        
     }
     else if(section==2)
     {
         UITextField *mytextview=[[UITextField alloc]init];
+        mytextview.placeholder=@"请填写值班内容。";
         [self.contentView addSubview:mytextview];
         [mytextview mas_remakeConstraints:^(MASConstraintMaker *make)
          {

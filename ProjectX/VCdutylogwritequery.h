@@ -10,7 +10,8 @@
 #import "Masonry.h"
 #import "TVdutylogwriteinfo.h"
 #import "TVdutyelogwritecell.h"
-@interface VCdutylogwritequery : UITableViewController
+#import "VCDutylogwrite.h"
+@interface VCdutylogwritequery : UIViewController
 <
 
 UITableViewDelegate,

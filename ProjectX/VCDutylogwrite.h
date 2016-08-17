@@ -10,6 +10,7 @@
 #import "JSDropDownMenu.h"
 #import "Masonry.h"
 #import "VCtestCell.h"
+#import "dutyloginfo.h"
 @interface VCDutylogwrite : UIViewController
 <
 JSDropDownMenuDataSource,
@@ -32,5 +33,15 @@ UIAlertViewDelegate
     NSInteger _currentData2Index;
     NSInteger _currentData3Index;
         UITableView* _tableView;
+        NSMutableData* _data;
 }
+//dutyinfo.username=username;
+//dutyinfo.roleid=roleid;
+//dutyinfo.userid=userid;
+//dutyinfo.rolename=rolename;
+//dutyinfo.myweekday=myweekday;
+//dutyinfo.isrecord=isrecord;
+//dutyinfo.pbdate=pbdate;
+@property NSString *currentElement;
+@property NSString *roleid,*userid,*pbdate,*isrecord,*myweekday,*username,*rolename;
 @end

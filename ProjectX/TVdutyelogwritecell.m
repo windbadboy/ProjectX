@@ -74,7 +74,6 @@
     _lblpbdate.text=pbdate;
     _lblusername.text=username;
     _lblweekday.text=weekday;
-
     _lblrolename.text=rolename;
 }
 

@@ -25,6 +25,7 @@ JSDropDownMenuDelegate
     NSInteger _currentData2Index;
     NSInteger _currentData3Index;
     NSInteger mycount;
+    NSInteger _dataindex1,_dataindex2;
 }
--(void)setarray1:(NSMutableArray*)array1 setarray2:(NSMutableArray*)array2 setsection:(NSInteger*)section setrow:(NSInteger)row;
+-(void)setarray1:(NSMutableArray*)array1 setarray2:(NSMutableArray*)array2 setsection:(NSInteger*)section setrow:(NSInteger)row setdataindex1:(NSInteger*)dataindex1 setdataindex2:(NSInteger*)dataindex2;
 @end
